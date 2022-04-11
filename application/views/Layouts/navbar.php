@@ -47,6 +47,18 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link " href="<?= base_url('IndexAntropometri') ?>">
+                                <i class="material-icons">note_add</i>
+                                <span>Index Antropometri</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="<?= base_url('balita') ?>">
+                                <i class="material-icons">note_add</i>
+                                <span>Aturan Konjungsi</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link " href="form-components.html">
                                 <i class="material-icons">view_module</i>
                                 <span>Pemeriksaan</span>

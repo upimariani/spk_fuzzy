@@ -32,6 +32,7 @@
 <script src="<?= base_url('asset/shards/') ?>scripts/extras.1.1.0.min.js"></script>
 <script src="<?= base_url('asset/shards/') ?>scripts/shards-dashboards.1.1.0.min.js"></script>
 <script src="<?= base_url('asset/shards/') ?>scripts/app/app-blog-overview.1.1.0.js"></script>
+
 <script>
     window.setTimeout(function() {
         $(".alert").fadeTo(500, 0).slideUp(500, function() {
