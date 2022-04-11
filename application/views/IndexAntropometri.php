@@ -77,7 +77,49 @@ if ($this->session->userdata('success')) {
             <?php
             }
             ?>
-            
+
+
+            <?php
+            foreach ($berat_badan as $key => $value) {
+                for ($i = $value->range_awal; $i <= $value->range_akhir; $i++) {
+                    if ($i == 15) {
+                        $berat = 0.0;
+                        if ($value->keterangan == 'ringan') {
+                            if (15 == 7) {
+                                $berat = 1;
+                            } else if (15 < 13) {
+                                $berat = (13 - 15) / 6;
+                            } else if (15 == 13) {
+                                $berat = 0;
+                            }
+                        } else if ($value->keterangan == 'sedang') {
+                            if (15 == 7) {
+                                $berat = 0;
+                            } else if (15 < 13) {
+                                $berat(15 - 7) / 6;
+                            } else if (15 <= 19) {
+                                $berat = (19 - 15) / 6;
+                            }
+                        } else if ($value->keterangan == 'berat') {
+                            if (15 == 13) {
+                                $berat = 0;
+                            } else if (15 < 19) {
+                                $berat = (15 - 13) / 6;
+                            } else if (15 == 19) {
+                                $berat = 1;
+                            }
+                        }
+            ?>
+                        <input type="text" value="<?= $berat ?>">
+                <?php
+                    }
+                }
+                ?>
+                <p><?= $value->nama_index ?> <?= $value->keterangan ?></p>
+            <?php
+            }
+            ?>
+
         </div>
     </div>
     <!-- End Page Header -->

@@ -34,6 +34,16 @@ class mAntropometri extends CI_Model
         $this->db->where('nama_index', $nama);
         return $this->db->get()->result();
     }
+
+    //index berat badan
+    public function select_berat()
+    {
+        $berat = "Berat Badan Laki-Laki";
+        $this->db->select('*');
+        $this->db->from('index');
+        $this->db->where('nama_index', $berat);
+        return $this->db->get()->result();
+    }
 }
 
 /* End of file mAntropometri.php */

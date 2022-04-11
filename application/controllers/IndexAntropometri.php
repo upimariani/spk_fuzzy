@@ -18,7 +18,8 @@ class IndexAntropometri extends CI_Controller
         if ($this->form_validation->run() == FALSE) {
             $data = array(
                 'index' => $this->mAntropometri->select(),
-                'range' => $this->mAntropometri->select_umur()
+                'range' => $this->mAntropometri->select_umur(),
+                'berat_badan' => $this->mAntropometri->select_berat()
             );
             $this->load->view('Layouts/head');
             $this->load->view('Layouts/navbar');
