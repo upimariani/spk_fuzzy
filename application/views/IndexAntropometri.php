@@ -20,106 +20,177 @@ if ($this->session->userdata('success')) {
         <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
             <span class="text-uppercase page-subtitle">Overview</span>
             <h3 class="page-title">Data User</h3>
-            <?php
-            foreach ($range as $key => $value) {
-                for ($i = $value->range_awal; $i <= $value->range_akhir; $i++) {
-                    if ($i == 35) {
-                        $fase = 0.0;
-                        if ($value->keterangan == 'fase 1') {
-                            if (35 == 6) {
-                                $fase = 1;
-                            } else if (35 < 12) {
-                                $fase = (12 - 35) / 12;
-                            } else if (35 == 12) {
-                                $fase = 0;
-                            }
-                        } else if ($value->keterangan == 'fase 2') {
-                            if (35 == 6) {
-                                $fase = 0;
-                            } else if (35 < 12) {
-                                $fase = (35 - 6) / 12;
-                            } else if (35 <= 24) {
-                                $fase = (24 - 35) / 12;
-                            }
-                        } else if ($value->keterangan == 'fase 3') {
-                            if (35 == 12) {
-                                $fase = 0;
-                            } else if (35 < 24) {
-                                $fase = (35 - 12) / 12;
-                            } else if (35 <= 36) {
-                                $fase = (36 - 35) / 12;
-                            }
-                        } else if ($value->keterangan == 'fase 4') {
-                            if (35 == 24) {
-                                $fase = 0;
-                            } else if (35 < 36) {
-                                $fase = (35 - 24) / 12;
-                            } else if (35 <= 48) {
-                                $fase = (48 - 35) / 12;
-                            }
-                        } else if ($value->keterangan == 'fase 5') {
-                            if (35 == 36) {
-                                $fase = 0;
-                            } else if (35 < 48) {
-                                $fase = (35 - 36) / 12;
-                            } else if (35 == 48) {
-                                $fase = 1;
-                            }
-                        }
-            ?>
-                        <input type="text" name="<?= $value->id_index ?>umur" data-id="<?= $value->id_index ?>" value="<?= $fase ?>">
-                <?php
-                    }
-                }
-                ?>
-
-                <p><?= $value->keterangan ?></p>
-            <?php
-            }
-            ?>
+            <form action="<?= base_url('IndexAntropometri/mamdani') ?>" method="POST">
+                <input type="text" name="umur" placeholder="umur">
+                <input type="text" name="berat" placeholder="berat badan laki-laki">
+                <button>Hitung</button>
+            </form>
 
 
             <?php
-            foreach ($berat_badan as $key => $value) {
-                for ($i = $value->range_awal; $i <= $value->range_akhir; $i++) {
-                    if ($i == 15) {
-                        $berat = 0.0;
-                        if ($value->keterangan == 'ringan') {
-                            if (15 == 7) {
-                                $berat = 1;
-                            } else if (15 < 13) {
-                                $berat = (13 - 15) / 6;
-                            } else if (15 == 13) {
-                                $berat = 0;
-                            }
-                        } else if ($value->keterangan == 'sedang') {
-                            if (15 == 7) {
-                                $berat = 0;
-                            } else if (15 < 13) {
-                                $berat(15 - 7) / 6;
-                            } else if (15 <= 19) {
-                                $berat = (19 - 15) / 6;
-                            }
-                        } else if ($value->keterangan == 'berat') {
-                            if (15 == 13) {
-                                $berat = 0;
-                            } else if (15 < 19) {
-                                $berat = (15 - 13) / 6;
-                            } else if (15 == 19) {
-                                $berat = 1;
-                            }
-                        }
-            ?>
-                        <input type="text" value="<?= $berat ?>">
-                <?php
-                    }
-                }
-                ?>
-                <p><?= $value->nama_index ?> <?= $value->keterangan ?></p>
-            <?php
-            }
+            // $umur = 23;
+            // $i_umur = array();
+            // //menghitung index umur
+            // if ($umur <= 12) {
+            //     if ($umur == 6) {
+            //         $i_umur[] = '11';
+            //     } else if ($umur < 12) {
+            //         $i_umur[] = '12';
+            //     } else if ($umur == 12) {
+            //         $i_umur[] = '13';
+            //     }
+            // } else if ($umur <= 24) {
+            //     if ($umur == 6) {
+            //         $i_umur[] = '21';
+            //     } else if ($umur < 12) {
+            //         $i_umur[] = '22';
+            //     } else if ($umur <= 24) {
+            //         $i_umur[] = '23';
+            //     }
+            // } else if ($umur <= 36) {
+            //     if ($umur == 12) {
+            //         $i_umur[] = '31';
+            //     } else if ($umur < 24) {
+            //         $i_umur[] = '32';
+            //     } else if ($umur <= 36) {
+            //         $i_umur[] = '33';
+            //     }
+            // }
+            // else if (($umur >= 24) && ($umur <= 48)) {
+            //     if ($umur == 24) {
+            //         $i_umur[] = '41';
+            //     } else if ($umur < 36) {
+            //         $i_umur[] = '42';
+            //     } else if ($umur <= 48) {
+            //         $i_umur[] = '43';
+            //     }
+            // } else if (($umur >= 36) && ($umur <= 60)) {
+            //     if ($umur == 36) {
+            //         $i_umur[] = '51';
+            //     } else if ($umur < 48) {
+            //         $i_umur[] = '52';
+            //     } else if ($umur == 48) {
+            //         $i_umur[] = '53';
+            //     }
+            // }
+            // for ($i = 0; $i < sizeof($i_umur); $i++) {
+            //     echo '' . $i_umur[$i];
+            // }
+
+
             ?>
 
+            <?php
+            // foreach ($range as $key => $value) {
+            //     for ($i = $value->range_awal; $i <= $value->range_akhir; $i++) {
+            //         $umur = 35;
+            //         if ($i == $umur) {
+            //             $fase = array();
+
+            //             if ($value->keterangan == 'fase 1') {
+            //                 $umur = $value->keterangan;
+            //                 if ($umur == 6) {
+            //                     $fase[] = 1;
+            //                 } else if ($umur < 12) {
+            //                     $fase[] = (12 - $umur) / 12;
+            //                 } else if ($umur == 12) {
+            //                     $fase[] = 0;
+            //                 }
+            //             } else if ($value->keterangan == 'fase 2') {
+            //                 if ($umur == 6) {
+            //                     $fase[] = 0;
+            //                 } else if ($umur < 12) {
+            //                     $fase[] = ($umur - 6) / 12;
+            //                 } else if ($umur <= 24) {
+            //                     $fase[] = (24 - $umur) / 12;
+            //                 }
+            //                 $umur = $value->keterangan;
+            //             } else if ($value->keterangan == 'fase 3') {
+            //                 if ($umur == 12) {
+            //                     $fase[] = 0;
+            //                 } else if ($umur < 24) {
+            //                     $fase[] = ($umur - 12) / 12;
+            //                 } else if ($umur <= 36) {
+            //                     $fase[] = (36 - $umur) / 12;
+            //                 }
+            //                 $umur = $value->keterangan;
+            //             } else if ($value->keterangan == 'fase 4') {
+            //                 if ($umur == 24) {
+            //                     $fase[] = 0;
+            //                 } else if ($umur < 36) {
+            //                     $fase[] = ($umur - 24) / 12;
+            //                 } else if ($umur <= 48) {
+            //                     $fase[] = (48 - $umur) / 12;
+            //                 }
+            //                 $umur = $value->keterangan;
+            //             } else if ($value->keterangan == 'fase 5') {
+            //                 if ($umur == 36) {
+            //                     $fase[] = 0;
+            //                 } else if ($umur < 48) {
+            //                     $fase[] = ($umur - 36) / 12;
+            //                 } else if ($umur == 48) {
+            //                     $fase[] = 1;
+            //                 }
+            //                 $umur = $value->keterangan;
+            //             }
+            //             echo '<br>' . $umur;
+            ?>
+            <?php
+            //     }
+            // }
+            ?>
+            <?php
+            // for ($i = 0; $i < sizeof($fase); $i++) {
+            ?>
+            <!-- <input type="text" name="<?= $value->id_index ?>umur" data-id="<?= $value->id_index ?>" value="<?= $fase[$i] ?>"> -->
+            <?php
+            // } 
+            ?>
+            <?php
+            // }
+            ?>
+            <?php
+            // foreach ($berat_badan as $key => $value) {
+            //     for ($i = $value->range_awal; $i <= $value->range_akhir; $i++) {
+            //         $brt = 15;
+            //         if ($i == $brt) {
+            //             $berat = 0.0;
+            //             if ($value->keterangan == 'ringan') {
+            //                 $berat_badan = $value->keterangan;
+            //                 if ($brt == 7) {
+            //                     $berat = 1;
+            //                 } else if ($brt < 13) {
+            //                     $berat = (13 - $brt) / 6;
+            //                 } else if ($brt == 13) {
+            //                     $berat = 0;
+            //                 }
+            //             } else if ($value->keterangan == 'sedang') {
+            //                 $berat_badan = $value->keterangan;
+            //                 if ($brt == 7) {
+            //                     $berat = 0;
+            //                 } else if ($brt < 13) {
+            //                     $berat($brt - 7) / 6;
+            //                 } else if ($brt <= 19) {
+            //                     $berat = (19 - $brt) / 6;
+            //                 }
+            //             } else if ($value->keterangan == 'berat') {
+            //                 $berat_badan = $value->keterangan;
+            //                 if ($brt == 13) {
+            //                     $berat = 0;
+            //                 } else if ($brt < 19) {
+            //                     $berat = ($brt - 13) / 6;
+            //                 } else if ($brt == 19) {
+            //                     $berat = 1;
+            //                 }
+            //             }
+            //             echo '<br>' . $berat_badan;
+            ?>
+            <!-- <input type="text" value="<?= $berat ?>"> -->
+            <?php
+            //         }
+            //     }
+            // }
+            ?>
         </div>
     </div>
     <!-- End Page Header -->
