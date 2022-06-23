@@ -32,7 +32,29 @@
 <script src="<?= base_url('asset/shards/') ?>scripts/extras.1.1.0.min.js"></script>
 <script src="<?= base_url('asset/shards/') ?>scripts/shards-dashboards.1.1.0.min.js"></script>
 <script src="<?= base_url('asset/shards/') ?>scripts/app/app-blog-overview.1.1.0.js"></script>
+<script>
+    console.log = function() {}
+    $("#balita").on('change', function() {
 
+        $(".nama").html($(this).find(':selected').attr('data-nama'));
+        $(".nama").val($(this).find(':selected').attr('data-nama'));
+
+        $(".alamat").html($(this).find(':selected').attr('data-alamat'));
+        $(".alamat").val($(this).find(':selected').attr('data-alamat'));
+
+        $(".ayah").html($(this).find(':selected').attr('data-ayah'));
+        $(".ayah").val($(this).find(':selected').attr('data-ayah'));
+
+        $(".ibu").html($(this).find(':selected').attr('data-ibu'));
+        $(".ibu").val($(this).find(':selected').attr('data-ibu'));
+
+        $(".jk").html($(this).find(':selected').attr('data-jk'));
+        $(".jk").val($(this).find(':selected').attr('data-jk'));
+
+        $(".tgl").html($(this).find(':selected').attr('data-tgl'));
+        $(".tgl").val($(this).find(':selected').attr('data-tgl'));
+    });
+</script>
 <script>
     window.setTimeout(function() {
         $(".alert").fadeTo(500, 0).slideUp(500, function() {
