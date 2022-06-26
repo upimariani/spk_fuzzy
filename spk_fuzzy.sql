@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 06, 2022 at 02:17 AM
--- Server version: 10.4.6-MariaDB
--- PHP Version: 7.3.9
+-- Generation Time: Jun 26, 2022 at 06:58 AM
+-- Server version: 10.4.20-MariaDB
+-- PHP Version: 7.4.22
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -43,7 +42,7 @@ CREATE TABLE `balita` (
 --
 
 INSERT INTO `balita` (`id_balita`, `nama_balita`, `alamat_balita`, `nama_ayah`, `nama_ibu`, `jenis_kelamin`, `tgl_lahir`) VALUES
-(3, 'Nazla', 'asasa', 'sd', 'Mamah', 'P', '04/30/2022');
+(4, 'Nanda Maulida', 'Ciawigebang, Kuningan', 'Maman', 'Siti', 'P', '06/12/2019');
 
 -- --------------------------------------------------------
 
@@ -130,7 +129,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `balita`
 --
 ALTER TABLE `balita`
-  MODIFY `id_balita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_balita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `index`

@@ -23,103 +23,63 @@ class Perhitungan extends CI_Controller
     }
     public function variabel_anggota()
     {
-        $jk = $this->input->post('jk');
-        $umur = $this->input->post('umur');
-        $berat = $this->input->post('berat');
-        $tinggi = $this->input->post('tinggi');
-
-        $var_umur = array();
-        $var_berat = array();
-        $var_tinggi = array();
-
-        echo $jk . '<br>';
-        echo $umur . '<br>';
-        echo $berat . '<br>';
-        echo $tinggi . '<br>';
-
-        //variabel umur
-        if ($umur >= 12 && $umur <= 24) {
-            $var_umur[] = 'fase 1';
+        $data = array(
+            'jk' => $this->input->post('jk'),
+            'umur' => $this->input->post('umur'),
+            'berat' => $this->input->post('berat'),
+            'tinggi' => $this->input->post('tinggi')
+        );
+        $this->load->view('Layouts/head');
+        $this->load->view('Layouts/navbar');
+        $this->load->view('DataKeanggotaan', $data);
+        $this->load->view('Layouts/footer');
+    }
+    public function defuzyfikasi()
+    {
+        $data_min = array();
+        $data_max = $this->input->post('data_max');
+        for ($i = 1; $i <= $data_max; $i++) {
+            $data_min[] = $this->input->post('min' . $i);
         }
-        if ($umur >= 12 && $umur <= 36) {
-            $var_umur[] = 'fase 2';
-        }
-        if ($umur >= 24 && $umur <= 48) {
-            $var_umur[] = 'fase 3';
-        }
-        if ($umur >= 36 && $umur <= 60) {
-            $var_umur[] = 'fase 4';
-        }
-        if ($umur >= 48 && $umur <= 60) {
-            $var_umur[] = 'fase 5';
-        }
+        $i++;
 
-        for ($i = 0; $i < sizeof($var_umur); $i++) {
-            echo $var_umur[$i];
+        // for ($a = 0; $a < sizeof($data_min); $a++) {
+        //     echo $data_min[$a] . '<br>';
+        // }
+        // $a++;
+        // $nilai_max = krsort($data_min);
+        // echo 'hasil';
+        // echo $nilai_max;
+
+        $first = PHP_INT_MIN;
+        $second = PHP_INT_MIN;
+        $third = PHP_INT_MIN;
+        for ($i = 0; $i < $data_max; $i++) {
+            $data_min[] = $this->input->post('min' . $i);
+            $data_gizi[] = $this->input->post('gizi' . $i);
+            if ($data_min[$i] > $first) {
+                $third = $second;
+                $second = $first;
+                $first = $data_min[$i];
+                $gizi_pertama = $data_gizi[$i];
+            }
+
+            // Jika data_minay[i] berada di antara $fist dan $second
+            // lalu perbarui $second
+            else if ($data_min[$i] > $second) {
+                $third = $second;
+                $second = $data_min[$i];
+                $gizi_kedua = $data_gizi[$i];
+            } else if ($data_min[$i] > $third)
+                $third = $data_min[$i];
+            $gizi_ketiga = $data_gizi[$i];
         }
-        echo '<br>';
-
-        if ($jk == 'P') {
-            //variabel berat badan perempuan
-            if ($berat >= 12 && $berat < 19) {
-                $var_berat[] = 'fase ringan';
-            }
-            if ($berat >= 12 && $berat <= 25) {
-                $var_berat[] = 'fase sedang';
-            }
-            if ($berat > 19 && $berat <= 25) {
-                $var_berat[] = 'fase berat';
-            }
-            for ($i = 0; $i < sizeof($var_berat); $i++) {
-                echo $var_berat[$i];
-            }
-            echo '<br>';
-            //tinggi badan perempuan
-
-            if ($tinggi >= 74 && $tinggi < 100) {
-                $var_tinggi[] = 'fase rendah';
-            }
-            if ($tinggi >= 74 && $tinggi <= 123) {
-                $var_tinggi[] = 'fase sedang';
-            }
-            if ($tinggi > 100 && $tinggi <= 123) {
-                $var_tinggi[] = 'fase tinggi';
-            }
-            for ($i = 0; $i < sizeof($var_tinggi); $i++) {
-                echo $var_tinggi[$i];
-            }
-            echo '<br>';
-        } else {
-            //variabel berat badan laki-laki
-            if ($berat >= 13 && $berat < 19) {
-                $var_berat[] = 'fase ringan';
-            }
-            if ($berat >= 13 && $berat <= 25) {
-                $var_berat[] = 'fase sedang';
-            }
-            if ($berat > 19 && $berat <= 25) {
-                $var_berat[] = 'fase berat';
-            }
-            for ($i = 0; $i < sizeof($var_berat); $i++) {
-                echo $var_berat[$i];
-            }
-            echo '<br>';
-
-            //tinggi badan laki laki
-            if ($tinggi >= 75 && $tinggi < 101) {
-                $var_tinggi[] = 'fase rendah';
-            }
-            if ($tinggi >= 75 && $tinggi <= 124) {
-                $var_tinggi[] = 'fase sedang';
-            }
-            if ($tinggi > 101 && $tinggi <= 124) {
-                $var_tinggi[] = 'fase tinggi';
-            }
-            for ($i = 0; $i < sizeof($var_tinggi); $i++) {
-                echo $var_tinggi[$i];
-            }
-            echo '<br>';
-        }
+        echo $first;
+        echo $gizi_pertama;
+        echo $second;
+        echo $gizi_kedua;
+        echo $third;
+        echo $gizi_ketiga;
     }
 }
 
