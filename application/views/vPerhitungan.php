@@ -24,7 +24,7 @@ if ($this->session->userdata('success')) {
     </div>
     <!-- End Page Header -->
     <!-- Default Light Table -->
-    <form action="<?= base_url('Perhitungan/variabel_anggota') ?>" method="POST">
+    <form action="<?= base_url('Perhitungan') ?>" method="POST">
         <div class="row">
             <div class="col-lg-5 mb-4">
                 <div class="card card-small mb-4">
@@ -55,43 +55,43 @@ if ($this->session->userdata('success')) {
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>Nama Balita</label>
-                                        <input type="text" value="<?= set_value('range') ?>" name="range" class="nama form-control" id="inputPassword4" placeholder="Masukkan Range Index">
-                                        <?= form_error('range', '<small class="text-danger pl-3">', '</small>'); ?>
+                                        <input type="text" value="<?= set_value('nama') ?>" name="nama" class="nama form-control" id="inputPassword4" placeholder="---Pilih Nama Balita---" readonly>
+                                        <?= form_error('nama', '<small class="text-danger pl-3">', '</small>'); ?>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>Alamat Balita</label>
-                                        <input type="text" value="<?= set_value('range') ?>" name="range" class="alamat form-control" id="inputPassword4" placeholder="Masukkan Range Index">
-                                        <?= form_error('range', '<small class="text-danger pl-3">', '</small>'); ?>
+                                        <input type="text" value="<?= set_value('alamat') ?>" name="alamat" class="alamat form-control" id="inputPassword4" placeholder="---Pilih Nama Balita---" readonly>
+                                        <?= form_error('alamat', '<small class="text-danger pl-3">', '</small>'); ?>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>Nama Ayah</label>
-                                        <input type="text" value="<?= set_value('range') ?>" name="range" class="ayah form-control" id="inputPassword4" placeholder="Masukkan Range Index">
-                                        <?= form_error('range', '<small class="text-danger pl-3">', '</small>'); ?>
+                                        <input type="text" value="<?= set_value('ayah') ?>" name="ayah" class="ayah form-control" id="inputPassword4" placeholder="---Pilih Nama Balita---" readonly>
+                                        <?= form_error('ayah', '<small class="text-danger pl-3">', '</small>'); ?>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>Nama Ibu</label>
-                                        <input type="text" value="<?= set_value('range') ?>" name="range" class="ibu form-control" id="inputPassword4" placeholder="Masukkan Range Index">
-                                        <?= form_error('range', '<small class="text-danger pl-3">', '</small>'); ?>
+                                        <input type="text" value="<?= set_value('ibu') ?>" name="ibu" class="ibu form-control" id="inputPassword4" placeholder="---Pilih Nama Balita---" readonly>
+                                        <?= form_error('ibu', '<small class="text-danger pl-3">', '</small>'); ?>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>Jenis Kelamin</label>
-                                        <input type="text" value="<?= set_value('range') ?>" name="jk" class="jk form-control" id="inputPassword4" placeholder="Masukkan Range Index">
-                                        <?= form_error('range', '<small class="text-danger pl-3">', '</small>'); ?>
+                                        <input type="text" value="<?= set_value('jk') ?>" name="jk" class="jk form-control" id="inputPassword4" placeholder="---Pilih Nama Balita---" readonly>
+                                        <?= form_error('jk', '<small class="text-danger pl-3">', '</small>'); ?>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>Tanggal Lahir</label>
-                                        <input type="text" value="<?= set_value('range') ?>" name="range" class="tgl form-control" id="inputPassword4" placeholder="Masukkan Range Index">
-                                        <?= form_error('range', '<small class="text-danger pl-3">', '</small>'); ?>
+                                        <input type="text" value="<?= set_value('tgl') ?>" name="tgl" class="tgl form-control" id="inputPassword4" placeholder="---Pilih Nama Balita---" readonly>
+                                        <?= form_error('tgl', '<small class="text-danger pl-3">', '</small>'); ?>
                                     </div>
                                 </div>
                             </div>
@@ -111,22 +111,22 @@ if ($this->session->userdata('success')) {
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <label>Umur Balita</label>
-                                        <input type="number" value="<?= set_value('range') ?>" name="umur" class="form-control" id="inputPassword4" placeholder="Masukkan Range Index">
-                                        <?= form_error('range', '<small class="text-danger pl-3">', '</small>'); ?>
+                                        <input type="number" value="<?= set_value('umur') ?>" name="umur" class="form-control" id="inputPassword4" placeholder="Masukkan Umur Balita">
+                                        <?= form_error('umur', '<small class="text-danger pl-3">', '</small>'); ?>
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <label>Berat Badan</label>
-                                        <input type="number" value="<?= set_value('range') ?>" name="berat" class="form-control" id="inputPassword4" placeholder="Masukkan Range Index">
-                                        <?= form_error('range', '<small class="text-danger pl-3">', '</small>'); ?>
+                                        <input type="number" value="<?= set_value('berat') ?>" name="berat" class="form-control" id="inputPassword4" placeholder="Masukkan berat Badan Balita">
+                                        <?= form_error('berat', '<small class="text-danger pl-3">', '</small>'); ?>
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <label>Tinggi Badan</label>
-                                        <input type="number" value="<?= set_value('range') ?>" name="tinggi" class="form-control" id="inputPassword4" placeholder="Masukkan Range Index">
-                                        <?= form_error('range', '<small class="text-danger pl-3">', '</small>'); ?>
+                                        <input type="number" value="<?= set_value('tinggi') ?>" name="tinggi" class="form-control" id="inputPassword4" placeholder="Masukkan Tinggi Badan Balita">
+                                        <?= form_error('tinggi', '<small class="text-danger pl-3">', '</small>'); ?>
                                     </div>
                                 </div>
 

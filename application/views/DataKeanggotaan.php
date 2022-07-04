@@ -102,11 +102,11 @@ if ($this->session->userdata('success')) {
                             if ($umur >= 48 && $umur <= 60) {
                                 $var_umur[] = 'fase 5';
                                 if ($umur < 48) {
-                                    $angg_umur = 0;
+                                    $angg_umur[] = 0;
                                 } else if (48 <= $umur && $umur <= 60) {
-                                    $angg_umur = ($umur - 48) / (60 - 48);
+                                    $angg_umur[] = ($umur - 48) / (60 - 48);
                                 } else if ($umur > 60) {
-                                    $angg_umur = 1;
+                                    $angg_umur[] = 1;
                                 }
                             }
 
@@ -241,17 +241,17 @@ if ($this->session->userdata('success')) {
                                     $var_tinggi[] = 'rendah';
                                     if ($tinggi < 75) {
                                         $angg_tinggi[] = 1;
-                                    } else if (75 <= $berat && $berat <= 101) {
+                                    } else if (75 <= $tinggi && $tinggi <= 101) {
                                         $angg_tinggi[] = (101 - $tinggi) / (101 - 75);
                                     } else if ($tinggi > 101) {
                                         $angg_tinggi[] = 0;
                                     }
                                 }
-                                if ($tinggi >= 75 && $tinggi <= 124) {
+                                if ($tinggi > 75 && $tinggi <= 124) {
                                     $var_tinggi[] = 'sedang';
                                     if ($tinggi < 75 || $tinggi > 124) {
                                         $angg_tinggi[] = 0;
-                                    } else if (75 >= $tinggi && $tinggi <= 101) {
+                                    } else if (75 <= $tinggi && $tinggi <= 101) {
                                         $angg_tinggi[] = ($tinggi - 75) / (101 - 75);
                                     } else if (101 < $tinggi && $tinggi <= 124) {
                                         $angg_tinggi[] = (124 - $tinggi) / (124 - 101);
@@ -396,7 +396,6 @@ if ($this->session->userdata('success')) {
                                                 <td><?= $gizi ?> <input type="hidden" name="<?= 'gizi' . $dt_gizi++ ?>" value="<?= $gizi ?>"></td>
                                                 <td><?= $min ?> <input type="hidden" name="<?= 'min' . $dt_min++ ?>" value="<?= $min ?>"></td>
                                                 <?php $max_min = $max++ ?>
-
                                             </tr>
                                 <?php
                                         }
@@ -405,7 +404,13 @@ if ($this->session->userdata('success')) {
                                 ?>
                         </tbody>
                     </table>
+                    <input type="hidden" name="jk" value="<?= $jk ?>">
                     <input type="hidden" name="data_max" value="<?= $max_min ?>">
+                    <input type="hidden" name="umur" value="<?= $umur ?>">
+                    <input type="hidden" name="berat" value="<?= $berat ?>">
+                    <input type="hidden" name="tinggi" value="<?= $tinggi ?>">
+                    <input type="hidden" name="jk" value="<?= $jk ?>">
+                    <input type="hidden" name="nama" value="<?= $nama_balita ?>">
                 </div>
                 <button type="submit" class="btn btn-warning">Defuzyfikasi</button>
                 </form>

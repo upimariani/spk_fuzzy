@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 26, 2022 at 06:58 AM
+-- Generation Time: Jul 04, 2022 at 06:44 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 7.4.22
 
@@ -42,7 +42,8 @@ CREATE TABLE `balita` (
 --
 
 INSERT INTO `balita` (`id_balita`, `nama_balita`, `alamat_balita`, `nama_ayah`, `nama_ibu`, `jenis_kelamin`, `tgl_lahir`) VALUES
-(4, 'Nanda Maulida', 'Ciawigebang, Kuningan', 'Maman', 'Siti', 'P', '06/12/2019');
+(4, 'Nanda Maulida', 'Ciawigebang, Kuningan', 'Maman', 'Siti', 'P', '06/12/2019'),
+(5, 'Zaenal', 'Pamijahan', 'Fajar', 'Sarah', 'L', '2005-03-04');
 
 -- --------------------------------------------------------
 
@@ -129,7 +130,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `balita`
 --
 ALTER TABLE `balita`
-  MODIFY `id_balita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_balita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `index`
