@@ -318,6 +318,8 @@ class Perhitungan extends CI_Controller
                 $status_gizi = 'Gizi Lebih';
             } else if ($titik_pusat >= 83 && $titik_pusat <= 123) {
                 $status_gizi = 'Gizi Obesitas';
+            } else {
+                $status_gizi = 'Gizi Buruk';
             }
         } else if ($jk == 'L') {
             if ($titik_pusat <= 49) {
@@ -330,6 +332,8 @@ class Perhitungan extends CI_Controller
                 $status_gizi = 'Gizi Lebih';
             } else if ($titik_pusat >= 83 && $titik_pusat <= 124) {
                 $status_gizi = 'Gizi Obesitas';
+            } else {
+                $status_gizi = 'Gizi Buruk';
             }
         }
         // echo '<h1>Hasil Status Gizi: ' . $status_gizi . '</h1>';

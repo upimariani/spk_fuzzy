@@ -59,7 +59,7 @@ if ($this->session->userdata('success')) {
                             // echo $tinggi . '<br>';
 
                             //variabel umur
-                            if ($umur >= 12 && $umur <= 24) {
+                            if ($umur >= 0 && $umur <= 24) {
                                 $var_umur[] = 'fase 1';
                                 if ($umur <= 12) {
                                     $angg_umur[] = 1;
@@ -120,7 +120,7 @@ if ($this->session->userdata('success')) {
 
                             if ($jk == 'P') {
                                 //variabel berat badan perempuan
-                                if ($berat >= 12 && $berat < 19) {
+                                if ($berat >= 0 && $berat < 19) {
                                     $var_berat[] = 'ringan';
                                     if ($berat <= 12) {
                                         $angg_berat[] = 1;
@@ -159,7 +159,7 @@ if ($this->session->userdata('success')) {
                                 // echo '<br>';
                                 //tinggi badan perempuan
 
-                                if ($tinggi >= 74 && $tinggi < 100) {
+                                if ($tinggi >= 0 && $tinggi < 100) {
                                     $var_tinggi[] = 'rendah';
                                     if ($tinggi < 74) {
                                         $angg_tinggi[] = 1;
@@ -198,7 +198,7 @@ if ($this->session->userdata('success')) {
                                 // echo '<br>';
                             } else {
                                 //variabel berat badan laki-laki
-                                if ($berat >= 13 && $berat < 19) {
+                                if ($berat >= 0 && $berat < 19) {
                                     $var_berat[] = 'ringan';
                                     if ($berat < 13) {
                                         $angg_berat[] = 1;
@@ -237,7 +237,7 @@ if ($this->session->userdata('success')) {
                                 // echo '<br>';
 
                                 //tinggi badan laki laki
-                                if ($tinggi >= 75 && $tinggi < 101) {
+                                if ($tinggi >= 0 && $tinggi < 101) {
                                     $var_tinggi[] = 'rendah';
                                     if ($tinggi < 75) {
                                         $angg_tinggi[] = 1;
