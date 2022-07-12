@@ -52,113 +52,164 @@ class Perhitungan extends CI_Controller
         $tinggi = $this->input->post('tinggi');
         $jk = $this->input->post('jk');
         $nama_balita = $this->input->post('nama');
-        $data_min = array();
+
         $data_max = $this->input->post('data_max');
+        $data_min = array();
         for ($i = 0; $i <= $data_max; $i++) {
+
             $data_min[] = $this->input->post('min' . $i);
             $data_gizi[] = $this->input->post('gizi' . $i);
+
+            // echo $data_min[$i];
+            // echo $data_gizi[$i];
+            // echo '<br>';
+        }
+        // echo '<br>';
+        // echo '<br>';
+        $buruk_dt = array();
+        $kurang_dt = array();
+        $normal_dt = array();
+        $lebih_dt = array();
+        $obesitas_dt = array();
+
+        for ($i = 0; $i < sizeof($data_min); $i++) {
+            if ($data_gizi[$i] == 'Buruk') {
+                // echo 'Buruk';
+                // echo $data_min[$i];
+                $buruk_dt[] = $data_min[$i];
+                $max[] = max($buruk_dt);
+                // echo '<br>';
+            } else if ($data_gizi[$i] == 'Kurang') {
+                // echo 'Kurang';
+                // echo $data_min[$i];
+                $kurang_dt[] = $data_min[$i];
+                $max[] = max($kurang_dt);
+                // echo '<br>';
+            } else if ($data_gizi[$i] == 'Normal') {
+                // echo 'Normal';
+                // echo $data_min[$i];
+
+                $normal_dt[] = $data_min[$i];
+                $max[] = max($normal_dt);
+                // echo '<br>';
+            } else if ($data_gizi[$i] == 'Lebih') {
+                // echo 'Lebih';
+                // echo $data_min[$i];
+
+                $lebih_dt[] = $data_min[$i];
+                $max[] = max($lebih_dt);
+                // echo '<br>';
+            } else if ($data_gizi[$i] == 'Obesitas') {
+                // echo 'Obesitas';
+                // echo $data_min[$i];
+
+                $obesitas_dt[] = $data_min[$i];
+                $max[] = max($obesitas_dt);
+                // echo '<br>';
+            }
         }
 
-        $first = PHP_INT_MIN;
-        $second = PHP_INT_MIN;
-        $third = PHP_INT_MIN;
 
-        for ($i = 0; $i <= $data_max; $i++) {
-            $data_min[] = $this->input->post('min' . $i);
-            $data_gizi[] = $this->input->post('gizi' . $i);
-            // echo $data_min[$i];
-            // echo $i;
-            // echo $data_gizi[$i];
-            // echo $i;
+        $data_var = array();
+        $data_gizi = array();
+        for ($i = 0; $i < sizeof($lebih_dt); $i++) {
+            $data_gizi[] = 'Lebih';
+            $data_var[] = max($lebih_dt);
             // echo '<br>';
-            if ($data_min[$i] > $first) {
-                $third = $second;
-                $second = $first;
-                $first = $data_min[$i];
-                $gizi_pertama = $data_gizi[$i];
-            }
+        }
+        for ($i = 0; $i < sizeof($obesitas_dt); $i++) {
+            $data_gizi[] = 'Obesitas';
+            $data_var[] = max($obesitas_dt);
+            // echo '<br>';
+        }
+        for ($i = 0; $i < sizeof($normal_dt); $i++) {
+            $data_gizi[] = 'Normal';
+            $data_var[] = max($normal_dt);
+            // echo '<br>';
+        }
+        for ($i = 0; $i < sizeof($kurang_dt); $i++) {
+            $data_gizi[] = 'Kurang';
+            $data_var[] = max($kurang_dt);
+            // echo '<br>';
+        }
+        for ($i = 0; $i < sizeof($buruk_dt); $i++) {
+            $data_gizi[] = 'Buruk';
+            $data_var[] = max($buruk_dt);
+            // echo '<br>';
+        }
+        for ($i = 0; $i < sizeof($data_var); $i++) {
+            echo $data_var[$i];
+            // echo '<br>';
+        }
+        // $max = max($data_var);
+        // $min = min($data_var);
+        // echo $max;
+        // echo $min;
 
-            // Jika data_minay[i] berada di antara $fist dan $second
-            // lalu perbarui $second
-            else if ($data_min[$i] > $second) {
-                $third = $second;
-                $second = $data_min[$i];
-                $gizi_kedua = $data_gizi[$i];
-            } else if ($data_min[$i] > $third)
-                $third = $data_min[$i];
-            $gizi_ketiga = $data_gizi[$i];
+
+
+
+        $maksimal = PHP_INT_MIN;
+
+        for ($i = 0; $i < sizeof($data_var); $i++) {
+            if ($data_var[$i] > $maksimal) {
+                $maksimal = $data_var[$i];
+                $gizi_maksimal = $data_gizi[$i];
+            }
         }
 
         // echo '<br> Data Pertama: ';
-        // echo $first;
-        // // echo $gizi_pertama;
-
-        // echo '<br> Data Kedua: ';
-        // echo $second;
-        // // echo $gizi_kedua;
+        // echo $maksimal;
+        // echo $gizi_maksimal;
 
 
-        // echo '<br> Data Ketiga: ';
-        // echo $third;
-        // // echo $gizi_ketiga;
-        // echo '<br>';
 
-        $nilai_gizi_max = array();
-        $nilai_gizi_max = max($first, $second, $third);
-        $nilai_gizi_min = min($first, $second, $third);
-        // echo '<br> Data Maksimal: ' . $nilai_gizi_max;
-        // echo '<br> Data Minimal: ' . $nilai_gizi_min;
-
-
-        //mencari status gizi maximal
-        if ($nilai_gizi_max == $first) {
-            $var_gizi_max = $gizi_pertama;
-        } else if ($nilai_gizi_max == $second) {
-            $var_gizi_max = $gizi_kedua;
-        } else if ($nilai_gizi_max == $third) {
-            $var_gizi_max = $gizi_ketiga;
+        $minimal = PHP_INT_MIN;
+        $kedua = PHP_INT_MIN;
+        for ($i = 0; $i < sizeof($data_var); $i++) {
+            if ($data_var[$i] > $minimal) {
+                $minimal = $data_var[$i];
+                $gizi_minimal = $data_gizi[$i];
+            } else if ($data_var[$i] < $minimal) {
+                $minimal = $data_var[$i];
+                $gizi_minimal = $data_gizi[$i];
+            }
         }
 
+        // echo '<br> Data Terakhir: ';
+        // echo $minimal;
+        // echo $gizi_minimal;
 
-        //mencari status gizi minimal
-        if ($nilai_gizi_min == $first) {
-            $var_gizi_min = $gizi_pertama;
-        } else if ($nilai_gizi_min == $second) {
-            $var_gizi_min = $gizi_kedua;
-        } else if ($nilai_gizi_min == $third) {
-            $var_gizi_min = $gizi_ketiga;
-        }
-        // echo '<br>';
-        // echo '<br>Data Gizi Maksimal: ';
-        // echo $var_gizi_max;
-        // echo '<br>Data Gizi Minimal: ';
-        // echo $var_gizi_max;
 
-        if ($var_gizi_max == 'Buruk') {
+
+
+
+
+        if ($gizi_maksimal == 'Buruk') {
             if ($jk == 'L') {
                 $max_gizi = '49';
             } else if ($jk == 'P') {
                 $max_gizi = '48';
             }
-        } else if ($var_gizi_max == 'Kurang') {
+        } else if ($gizi_maksimal == 'Kurang') {
             if ($jk == 'L') {
                 $max_gizi = '53';
             } else if ($jk == 'P') {
                 $max_gizi = '53';
             }
-        } else if ($var_gizi_max == 'Normal') {
+        } else if ($gizi_maksimal == 'Normal') {
             if ($jk == 'L') {
                 $max_gizi = '70';
             } else if ($jk == 'P') {
                 $max_gizi = '70';
             }
-        } else if ($var_gizi_max == 'Lebih') {
+        } else if ($gizi_maksimal == 'Lebih') {
             if ($jk == 'L') {
                 $max_gizi = '82';
             } else if ($jk == 'P') {
                 $max_gizi = '83';
             }
-        } else if ($var_gizi_max == 'Obesitas') {
+        } else if ($gizi_maksimal == 'Obesitas') {
             if ($jk == 'L') {
                 $max_gizi = '124';
             } else if ($jk == 'P') {
@@ -170,12 +221,12 @@ class Perhitungan extends CI_Controller
         // echo '<br>';
 
 
-        if ($var_gizi_max == 'Buruk') {
-            $z = round(53 - ($nilai_gizi_max * (53 - 48)));
-            $k = round(53 - ($nilai_gizi_min * (53 - 48)));
+        if ($gizi_maksimal == 'Buruk') {
+            $z = round(53 - ($maksimal * (53 - 48)));
+            $k = round(53 - ($minimal * (53 - 48)));
 
             //perhitungan m1 
-            $hasil_m1 = $nilai_gizi_max * ($z * $z);
+            $hasil_m1 = $maksimal * ($z * $z);
 
 
 
@@ -192,13 +243,13 @@ class Perhitungan extends CI_Controller
             $hasil_m2 = $v5 - $v6;
 
             //perhitungan m3
-            $hasil_m3 = ($nilai_gizi_min * ($max_gizi * $max_gizi)) - ($nilai_gizi_min * ($k * $k));
-        } else if ($var_gizi_max == 'Kurang') {
-            $z = round(48 - ($nilai_gizi_max * (53 - 48)));
-            $k = round(48 - ($nilai_gizi_min * (53 - 48)));
+            $hasil_m3 = ($minimal * ($max_gizi * $max_gizi)) - ($minimal * ($k * $k));
+        } else if ($gizi_maksimal == 'Kurang') {
+            $z = round(48 - ($maksimal * (53 - 48)));
+            $k = round(48 - ($minimal * (53 - 48)));
 
             //perhitungan m1 
-            $hasil_m1 = $nilai_gizi_max * ($z * $z);
+            $hasil_m1 = $maksimal * ($z * $z);
 
 
             //perhitungan m2
@@ -214,13 +265,13 @@ class Perhitungan extends CI_Controller
             $hasil_m2 = $v5 - $v6;
 
             //perhitungan m3
-            $hasil_m3 = ($nilai_gizi_min * ($max_gizi * $max_gizi)) - ($nilai_gizi_min * ($k * $k));
-        } else if ($var_gizi_max == 'Normal') {
-            $z = round(53 - ($nilai_gizi_max * (70 - 53)));
-            $k = round(53 - ($nilai_gizi_min * (70 - 53)));
+            $hasil_m3 = ($minimal * ($max_gizi * $max_gizi)) - ($minimal * ($k * $k));
+        } else if ($gizi_maksimal == 'Normal') {
+            $z = round(53 - ($maksimal * (70 - 53)));
+            $k = round(53 - ($minimal * (70 - 53)));
 
             //perhitungan m1 
-            $hasil_m1 = $nilai_gizi_max * ($z * $z);
+            $hasil_m1 = $maksimal * ($z * $z);
 
 
             //perhitungan m2
@@ -236,12 +287,12 @@ class Perhitungan extends CI_Controller
             $hasil_m2 = $v5 - $v6;
 
             //perhitungan m3
-            $hasil_m3 = ($nilai_gizi_min * ($max_gizi * $max_gizi)) - ($nilai_gizi_min * ($k * $k));
-        } else if ($var_gizi_max == 'Lebih') {
-            $z = round(70 - ($nilai_gizi_max * (83 - 70)));
-            $k = round(70 - ($nilai_gizi_min * (83 - 70)));
+            $hasil_m3 = ($minimal * ($max_gizi * $max_gizi)) - ($minimal * ($k * $k));
+        } else if ($gizi_maksimal == 'Lebih') {
+            $z = round(70 - ($maksimal * (83 - 70)));
+            $k = round(70 - ($minimal * (83 - 70)));
             //perhitungan m1 
-            $hasil_m1 = $nilai_gizi_max * ($z * $z);
+            $hasil_m1 = $maksimal * ($z * $z);
 
             //perhitungan m2
             $v1 = (2.69 * ($k * $k));
@@ -256,13 +307,13 @@ class Perhitungan extends CI_Controller
             $hasil_m2 = $v5 - $v6;
 
             //perhitungan m3
-            $hasil_m3 = ($nilai_gizi_min * ($max_gizi * $max_gizi)) - ($nilai_gizi_min * ($k * $k));
-        } else if ($var_gizi_max == 'Obesitas') {
-            $z = round(83 - ($nilai_gizi_max * (123 - 83)));
-            $k = round(83 - ($nilai_gizi_min * (123 - 83)));
+            $hasil_m3 = ($minimal * ($max_gizi * $max_gizi)) - ($minimal * ($k * $k));
+        } else if ($gizi_maksimal == 'Obesitas') {
+            $z = round(83 - ($maksimal * (123 - 83)));
+            $k = round(83 - ($minimal * (123 - 83)));
 
             //perhitungan m1 
-            $hasil_m1 = $nilai_gizi_max * ($z * $z);
+            $hasil_m1 = $maksimal * ($z * $z);
 
             //perhitungan m2
             $v1 = (1.0375 * ($k * $k));
@@ -277,14 +328,14 @@ class Perhitungan extends CI_Controller
             $hasil_m2 = $v5 - $v6;
 
             //perhitungan m3
-            $hasil_m3 = ($nilai_gizi_min * ($max_gizi * $max_gizi)) - ($nilai_gizi_min * ($k * $k));
+            $hasil_m3 = ($minimal * ($max_gizi * $max_gizi)) - ($minimal * ($k * $k));
         }
 
 
         //perhitungan luas
-        $a1 = $z * $nilai_gizi_max;
-        $a2 = (($nilai_gizi_max + $nilai_gizi_min) * ($k - $z)) / 2;
-        $a3 = ($max_gizi - $k) * $nilai_gizi_min;
+        $a1 = $z * $maksimal;
+        $a2 = (($maksimal + $minimal) * ($k - $z)) / 2;
+        $a3 = ($max_gizi - $k) * $minimal;
         // echo '<br>';
         // echo 'Nilai Maks ' . $z;
         // echo '<br>';
@@ -339,10 +390,10 @@ class Perhitungan extends CI_Controller
         // echo '<h1>Hasil Status Gizi: ' . $status_gizi . '</h1>';
 
         $data = array(
-            'nilai_maks' => $nilai_gizi_max,
-            'gizi_maks' => $var_gizi_max,
-            'nilai_min' => $nilai_gizi_min,
-            'gizi_min' => $var_gizi_min,
+            'nilai_maks' => $maksimal,
+            'gizi_maks' => $gizi_maksimal,
+            'nilai_min' => $minimal,
+            'gizi_min' => $gizi_minimal,
             'm1' => $hasil_m1,
             'm2' => $hasil_m2,
             'm3' => $hasil_m3,
@@ -363,10 +414,6 @@ class Perhitungan extends CI_Controller
         $this->load->view('Layouts/navbar');
         $this->load->view('HasilMamdani', $data);
         $this->load->view('Layouts/footer');
-    }
-
-    public function halaman()
-    {
     }
 }
 
