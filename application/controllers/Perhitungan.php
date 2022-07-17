@@ -74,18 +74,23 @@ class Perhitungan extends CI_Controller
 
         for ($i = 0; $i < sizeof($data_min); $i++) {
             if ($data_gizi[$i] == 'Buruk') {
+                // echo $i;
                 // echo 'Buruk';
                 // echo $data_min[$i];
+
                 $buruk_dt[] = $data_min[$i];
                 $max[] = max($buruk_dt);
                 // echo '<br>';
             } else if ($data_gizi[$i] == 'Kurang') {
+                // echo $i;
                 // echo 'Kurang';
                 // echo $data_min[$i];
+
                 $kurang_dt[] = $data_min[$i];
                 $max[] = max($kurang_dt);
                 // echo '<br>';
             } else if ($data_gizi[$i] == 'Normal') {
+                // echo $i;
                 // echo 'Normal';
                 // echo $data_min[$i];
 
@@ -93,6 +98,7 @@ class Perhitungan extends CI_Controller
                 $max[] = max($normal_dt);
                 // echo '<br>';
             } else if ($data_gizi[$i] == 'Lebih') {
+                // echo $i;
                 // echo 'Lebih';
                 // echo $data_min[$i];
 
@@ -100,6 +106,7 @@ class Perhitungan extends CI_Controller
                 $max[] = max($lebih_dt);
                 // echo '<br>';
             } else if ($data_gizi[$i] == 'Obesitas') {
+                // echo $i;
                 // echo 'Obesitas';
                 // echo $data_min[$i];
 
@@ -115,6 +122,7 @@ class Perhitungan extends CI_Controller
         for ($i = 0; $i < sizeof($lebih_dt); $i++) {
             $data_gizi[] = 'Lebih';
             $data_var[] = max($lebih_dt);
+
             // echo '<br>';
         }
         for ($i = 0; $i < sizeof($obesitas_dt); $i++) {
@@ -137,10 +145,17 @@ class Perhitungan extends CI_Controller
             $data_var[] = max($buruk_dt);
             // echo '<br>';
         }
-        for ($i = 0; $i < sizeof($data_var); $i++) {
-            echo $data_var[$i];
-            // echo '<br>';
-        }
+
+
+        // echo '<br>';
+        // echo '<br>';
+        // for ($i = 0; $i < sizeof($data_var); $i++) {
+        //     echo $data_var[$i];
+        //     echo $data_gizi[$i];
+        //     echo $i;
+        //     echo '<br>';
+        //     // echo '<br>';
+        // }
         // $max = max($data_var);
         // $min = min($data_var);
         // echo $max;
@@ -164,21 +179,21 @@ class Perhitungan extends CI_Controller
 
 
 
-        $minimal = PHP_INT_MIN;
-        $kedua = PHP_INT_MIN;
-        for ($i = 0; $i < sizeof($data_var); $i++) {
-            if ($data_var[$i] > $minimal) {
-                $minimal = $data_var[$i];
-                $gizi_minimal = $data_gizi[$i];
-            } else if ($data_var[$i] < $minimal) {
-                $minimal = $data_var[$i];
-                $gizi_minimal = $data_gizi[$i];
-            }
+        sort($data_var);
+
+        $bottomThree = 1;
+        for ($x = 0; $x < $bottomThree; $x++) {
+            // echo "<br>";
+            $minimal = $data_var[$x];
+            $gizi_minimal = $data_gizi[$x];
+            // echo "<br>";
         }
+
 
         // echo '<br> Data Terakhir: ';
         // echo $minimal;
         // echo $gizi_minimal;
+
 
 
 
