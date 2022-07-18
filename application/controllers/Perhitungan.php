@@ -200,31 +200,31 @@ class Perhitungan extends CI_Controller
 
 
 
-        if ($gizi_maksimal == 'Buruk') {
+        if ($gizi_minimal == 'Buruk') {
             if ($jk == 'L') {
                 $max_gizi = '49';
             } else if ($jk == 'P') {
                 $max_gizi = '48';
             }
-        } else if ($gizi_maksimal == 'Kurang') {
+        } else if ($gizi_minimal == 'Kurang') {
             if ($jk == 'L') {
                 $max_gizi = '53';
             } else if ($jk == 'P') {
                 $max_gizi = '53';
             }
-        } else if ($gizi_maksimal == 'Normal') {
+        } else if ($gizi_minimal == 'Normal') {
             if ($jk == 'L') {
                 $max_gizi = '70';
             } else if ($jk == 'P') {
                 $max_gizi = '70';
             }
-        } else if ($gizi_maksimal == 'Lebih') {
+        } else if ($gizi_minimal == 'Lebih') {
             if ($jk == 'L') {
                 $max_gizi = '82';
             } else if ($jk == 'P') {
                 $max_gizi = '83';
             }
-        } else if ($gizi_maksimal == 'Obesitas') {
+        } else if ($gizi_minimal == 'Obesitas') {
             if ($jk == 'L') {
                 $max_gizi = '124';
             } else if ($jk == 'P') {
@@ -232,118 +232,260 @@ class Perhitungan extends CI_Controller
             }
         }
 
-        // echo '<br>Data Status Gizi: ' . $max_gizi;
-        // echo '<br>';
+        echo '<br>Data Status Gizi: ' . $max_gizi;
+        echo '<br>';
 
 
+        //keterangan z = maksimal
+        //keterangan k = minimal
         if ($gizi_maksimal == 'Buruk') {
-            $z = round(53 - ($maksimal * (53 - 48)));
-            $k = round(53 - ($minimal * (53 - 48)));
+            if ($jk == 'L') {
+                $z = round(53 - ($maksimal * (53 - 49)));
+                $k = round(53 - ($minimal * (53 - 49)));
 
-            //perhitungan m1 
-            $hasil_m1 = $maksimal * ($z * $z);
+                //perhitungan m1 
+                $hasil_m1 = $maksimal * ($z * $z);
+                // echo $z;
 
 
 
-            //perhitungan m2
-            $v1 = (6.625 * ($k * $k));
-            $v2 = (0.083 * ($k * $k * $k));
+                //perhitungan m2
+                $v1 = round(6.625 * ($k * $k));
+                // echo '<br>';
+                // echo $v1;
+                $v2 = round(0.083 * ($k * $k * $k));
+                // echo '<br>';
+                // echo $v2;
+                // echo '<br>';
 
-            $v3 = (6.625 * ($z * $z));
-            $v4 = (0.083 * ($z * $z * $z));
+                $v3 = round(6.625 * ($z * $z));
+                echo '<br>';
+                // echo $v3;
+                $v4 = round(0.083 * ($z * $z * $z));
+                // echo '<br>';
+                // echo $v4;
+                // echo '<br>';
 
-            $v5 = $v1 - $v2;
-            $v6 = $v3 - $v4;
+                $v5 = $v1 - $v2;
+                $v6 = $v3 - $v4;
 
-            $hasil_m2 = $v5 - $v6;
+                $hasil_m2 = $v5 - $v6;
 
-            //perhitungan m3
-            $hasil_m3 = ($minimal * ($max_gizi * $max_gizi)) - ($minimal * ($k * $k));
+                //perhitungan m3
+                $hasil_m3 = ($minimal * ($max_gizi * $max_gizi)) - ($minimal * ($k * $k));
+            } else if ($jk == 'P') {
+                $z = round(53 - ($maksimal * (53 - 48)));
+                $k = round(53 - ($minimal * (53 - 48)));
+
+                //perhitungan m1 
+                $hasil_m1 = $maksimal * ($z * $z);
+                echo $z;
+
+
+
+                //perhitungan m2
+                $v1 = round(6.625 * ($k * $k));
+                // echo '<br>';
+                // echo $v1;
+                $v2 = round(0.083 * ($k * $k * $k));
+                // echo '<br>';
+                // echo $v2;
+                // echo '<br>';
+
+                $v3 = round(6.625 * ($z * $z));
+                // echo '<br>';
+                // echo $v3;
+                $v4 = round(0.083 * ($z * $z * $z));
+                // echo '<br>';
+                // echo $v4;
+                // echo '<br>';
+
+                $v5 = $v1 - $v2;
+                $v6 = $v3 - $v4;
+
+                $hasil_m2 = $v5 - $v6;
+
+                //perhitungan m3
+                $hasil_m3 = ($minimal * ($max_gizi * $max_gizi)) - ($minimal * ($k * $k));
+            }
         } else if ($gizi_maksimal == 'Kurang') {
-            $z = round(48 - ($maksimal * (53 - 48)));
-            $k = round(48 - ($minimal * (53 - 48)));
+            if ($jk == 'L') {
+                $z = round(49 - ($maksimal * (53 - 49)));
+                $k = round(49 - ($minimal * (53 - 49)));
 
-            //perhitungan m1 
-            $hasil_m1 = $maksimal * ($z * $z);
+                //perhitungan m1 
+                $hasil_m1 = $maksimal * ($z * $z);
 
 
-            //perhitungan m2
-            $v1 = (4.8 * ($k * $k));
-            $v2 = (0.067 * ($k * $k * $k));
+                //perhitungan m2
+                $v1 = (4.8 * ($k * $k));
+                $v2 = (0.067 * ($k * $k * $k));
 
-            $v3 = (4.8 * ($z * $z));
-            $v4 = (0.067 * ($z * $z * $z));
+                $v3 = (4.8 * ($z * $z));
+                $v4 = (0.067 * ($z * $z * $z));
 
-            $v5 = $v1 - $v2;
-            $v6 = $v3 - $v4;
+                $v5 = $v1 - $v2;
+                $v6 = $v3 - $v4;
 
-            $hasil_m2 = $v5 - $v6;
+                $hasil_m2 = $v5 - $v6;
 
-            //perhitungan m3
-            $hasil_m3 = ($minimal * ($max_gizi * $max_gizi)) - ($minimal * ($k * $k));
+                //perhitungan m3
+                $hasil_m3 = ($minimal * ($max_gizi * $max_gizi)) - ($minimal * ($k * $k));
+            } else if ($jk == 'P') {
+                $z = round(48 - ($maksimal * (53 - 48)));
+                $k = round(48 - ($minimal * (53 - 48)));
+
+                //perhitungan m1 
+                $hasil_m1 = $maksimal * ($z * $z);
+
+
+                //perhitungan m2
+                $v1 = (4.8 * ($k * $k));
+                $v2 = (0.067 * ($k * $k * $k));
+
+                $v3 = (4.8 * ($z * $z));
+                $v4 = (0.067 * ($z * $z * $z));
+
+                $v5 = $v1 - $v2;
+                $v6 = $v3 - $v4;
+
+                $hasil_m2 = $v5 - $v6;
+
+                //perhitungan m3
+                $hasil_m3 = ($minimal * ($max_gizi * $max_gizi)) - ($minimal * ($k * $k));
+            }
         } else if ($gizi_maksimal == 'Normal') {
-            $z = round(53 - ($maksimal * (70 - 53)));
-            $k = round(53 - ($minimal * (70 - 53)));
+            if ($jk == 'L') {
+                $z = round(53 - ($maksimal * (70 - 53)));
+                $k = round(53 - ($minimal * (70 - 53)));
 
-            //perhitungan m1 
-            $hasil_m1 = $maksimal * ($z * $z);
+                //perhitungan m1 
+                $hasil_m1 = $maksimal * ($z * $z);
 
 
-            //perhitungan m2
-            $v1 = (1.558 * ($k * $k));
-            $v2 = (0.019 * ($k * $k * $k));
+                //perhitungan m2
+                $v1 = (1.558 * ($k * $k));
+                $v2 = (0.019 * ($k * $k * $k));
 
-            $v3 = (1.558 * ($z * $z));
-            $v4 = (0.019 * ($z * $z * $z));
+                $v3 = (1.558 * ($z * $z));
+                $v4 = (0.019 * ($z * $z * $z));
 
-            $v5 = $v1 - $v2;
-            $v6 = $v3 - $v4;
+                $v5 = $v1 - $v2;
+                $v6 = $v3 - $v4;
 
-            $hasil_m2 = $v5 - $v6;
+                $hasil_m2 = $v5 - $v6;
 
-            //perhitungan m3
-            $hasil_m3 = ($minimal * ($max_gizi * $max_gizi)) - ($minimal * ($k * $k));
+                //perhitungan m3
+                $hasil_m3 = ($minimal * ($max_gizi * $max_gizi)) - ($minimal * ($k * $k));
+            } else if ($jk == 'P') {
+                $z = round(53 - ($maksimal * (70 - 53)));
+                $k = round(53 - ($minimal * (70 - 53)));
+
+                //perhitungan m1 
+                $hasil_m1 = $maksimal * ($z * $z);
+
+
+                //perhitungan m2
+                $v1 = (1.558 * ($k * $k));
+                $v2 = (0.019 * ($k * $k * $k));
+
+                $v3 = (1.558 * ($z * $z));
+                $v4 = (0.019 * ($z * $z * $z));
+
+                $v5 = $v1 - $v2;
+                $v6 = $v3 - $v4;
+
+                $hasil_m2 = $v5 - $v6;
+
+                //perhitungan m3
+                $hasil_m3 = ($minimal * ($max_gizi * $max_gizi)) - ($minimal * ($k * $k));
+            }
         } else if ($gizi_maksimal == 'Lebih') {
-            $z = round(70 - ($maksimal * (83 - 70)));
-            $k = round(70 - ($minimal * (83 - 70)));
-            //perhitungan m1 
-            $hasil_m1 = $maksimal * ($z * $z);
+            if ($jk == 'L') {
+                $z = round(70 - ($maksimal * (82 - 70)));
+                $k = round(70 - ($minimal * (82 - 70)));
+                //perhitungan m1 
+                $hasil_m1 = $maksimal * ($z * $z);
 
-            //perhitungan m2
-            $v1 = (2.69 * ($k * $k));
-            $v2 = (0.025 * ($k * $k * $k));
+                //perhitungan m2
+                $v1 = (2.69 * ($k * $k));
+                $v2 = (0.025 * ($k * $k * $k));
 
-            $v3 = (2.69 * ($z * $z));
-            $v4 = (0.025 * ($z * $z * $z));
+                $v3 = (2.69 * ($z * $z));
+                $v4 = (0.025 * ($z * $z * $z));
 
-            $v5 = $v1 - $v2;
-            $v6 = $v3 - $v4;
+                $v5 = $v1 - $v2;
+                $v6 = $v3 - $v4;
 
-            $hasil_m2 = $v5 - $v6;
+                $hasil_m2 = $v5 - $v6;
 
-            //perhitungan m3
-            $hasil_m3 = ($minimal * ($max_gizi * $max_gizi)) - ($minimal * ($k * $k));
+                //perhitungan m3
+                $hasil_m3 = ($minimal * ($max_gizi * $max_gizi)) - ($minimal * ($k * $k));
+            } else if ($jk == 'P') {
+                $z = round(70 - ($maksimal * (83 - 70)));
+                $k = round(70 - ($minimal * (83 - 70)));
+                //perhitungan m1 
+                $hasil_m1 = $maksimal * ($z * $z);
+
+                //perhitungan m2
+                $v1 = (2.69 * ($k * $k));
+                $v2 = (0.025 * ($k * $k * $k));
+
+                $v3 = (2.69 * ($z * $z));
+                $v4 = (0.025 * ($z * $z * $z));
+
+                $v5 = $v1 - $v2;
+                $v6 = $v3 - $v4;
+
+                $hasil_m2 = $v5 - $v6;
+
+                //perhitungan m3
+                $hasil_m3 = ($minimal * ($max_gizi * $max_gizi)) - ($minimal * ($k * $k));
+            }
         } else if ($gizi_maksimal == 'Obesitas') {
-            $z = round(83 - ($maksimal * (123 - 83)));
-            $k = round(83 - ($minimal * (123 - 83)));
+            if ($jk == 'L') {
+                $z = round(82 - ($maksimal * (123 - 82)));
+                $k = round(82 - ($minimal * (123 - 82)));
 
-            //perhitungan m1 
-            $hasil_m1 = $maksimal * ($z * $z);
+                //perhitungan m1 
+                $hasil_m1 = $maksimal * ($z * $z);
 
-            //perhitungan m2
-            $v1 = (1.0375 * ($k * $k));
-            $v2 = (0.008 * ($k * $k * $k));
+                //perhitungan m2
+                $v1 = (1.0375 * ($k * $k));
+                $v2 = (0.008 * ($k * $k * $k));
 
-            $v3 = (1.0375 * ($z * $z));
-            $v4 = (0.008 * ($z * $z * $z));
+                $v3 = (1.0375 * ($z * $z));
+                $v4 = (0.008 * ($z * $z * $z));
 
-            $v5 = $v1 - $v2;
-            $v6 = $v3 - $v4;
+                $v5 = $v1 - $v2;
+                $v6 = $v3 - $v4;
 
-            $hasil_m2 = $v5 - $v6;
+                $hasil_m2 = $v5 - $v6;
 
-            //perhitungan m3
-            $hasil_m3 = ($minimal * ($max_gizi * $max_gizi)) - ($minimal * ($k * $k));
+                //perhitungan m3
+                $hasil_m3 = ($minimal * ($max_gizi * $max_gizi)) - ($minimal * ($k * $k));
+            } else if ($jk == 'P') {
+                $z = round(83 - ($maksimal * (123 - 83)));
+                $k = round(83 - ($minimal * (123 - 83)));
+
+                //perhitungan m1 
+                $hasil_m1 = $maksimal * ($z * $z);
+
+                //perhitungan m2
+                $v1 = (1.0375 * ($k * $k));
+                $v2 = (0.008 * ($k * $k * $k));
+
+                $v3 = (1.0375 * ($z * $z));
+                $v4 = (0.008 * ($z * $z * $z));
+
+                $v5 = $v1 - $v2;
+                $v6 = $v3 - $v4;
+
+                $hasil_m2 = $v5 - $v6;
+
+                //perhitungan m3
+                $hasil_m3 = ($minimal * ($max_gizi * $max_gizi)) - ($minimal * ($k * $k));
+            }
         }
 
 
@@ -355,6 +497,10 @@ class Perhitungan extends CI_Controller
         // echo 'Nilai Maks ' . $z;
         // echo '<br>';
         // echo 'Nilai Min ' . $k;
+        // echo '<br>';
+        // echo 'Nilai Maksimal ' . $maksimal;
+        // echo '<br>';
+        // echo 'Nilai Minimal ' . $minimal;
         // echo '<br>';
         // echo '<br>';
         // echo '<br>Hasil M1: ' . $hasil_m1;
