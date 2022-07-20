@@ -29,7 +29,8 @@ class Perhitungan extends CI_Controller
             );
             $this->load->view('Layouts/head');
             $this->load->view('Layouts/navbar');
-            $this->load->view('vPerhitungan', $data);
+            $this->load->view('Layouts/aside');
+            $this->load->view('Perhitungan/vPerhitungan', $data);
             $this->load->view('Layouts/footer');
         } else {
             $data = array(
@@ -41,7 +42,8 @@ class Perhitungan extends CI_Controller
             );
             $this->load->view('Layouts/head');
             $this->load->view('Layouts/navbar');
-            $this->load->view('DataKeanggotaan', $data);
+            $this->load->view('Layouts/aside');
+            $this->load->view('Perhitungan/DataKeanggotaan', $data);
             $this->load->view('Layouts/footer');
         }
     }
@@ -180,10 +182,9 @@ class Perhitungan extends CI_Controller
 
 
         sort($data_var);
-
         $bottomThree = 1;
         for ($x = 0; $x < $bottomThree; $x++) {
-            // echo "<br>";
+            echo "<br>";
             $minimal = $data_var[$x];
             $gizi_minimal = $data_gizi[$x];
             // echo "<br>";
@@ -232,8 +233,8 @@ class Perhitungan extends CI_Controller
             }
         }
 
-        echo '<br>Data Status Gizi: ' . $max_gizi;
-        echo '<br>';
+        // echo '<br>Data Status Gizi: ' . $max_gizi;
+        // echo '<br>';
 
 
         //keterangan z = maksimal
@@ -573,7 +574,8 @@ class Perhitungan extends CI_Controller
         );
         $this->load->view('Layouts/head');
         $this->load->view('Layouts/navbar');
-        $this->load->view('HasilMamdani', $data);
+        $this->load->view('Layouts/aside');
+        $this->load->view('Perhitungan/HasilMamdani', $data);
         $this->load->view('Layouts/footer');
     }
 }

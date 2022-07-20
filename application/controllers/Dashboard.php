@@ -8,6 +8,7 @@ class Dashboard extends CI_Controller
     {
         $this->load->view('Layouts/head');
         $this->load->view('Layouts/navbar');
+        $this->load->view('Layouts/aside');
         $this->load->view('Dashboard');
         $this->load->view('Layouts/footer');
     }

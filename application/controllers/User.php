@@ -13,6 +13,17 @@ class User extends CI_Controller
 
     public function index()
     {
+        $data = array(
+            'user' => $this->mUser->select()
+        );
+        $this->load->view('Layouts/head');
+        $this->load->view('Layouts/navbar');
+        $this->load->view('Layouts/aside');
+        $this->load->view('User/User', $data);
+        $this->load->view('Layouts/footer');
+    }
+    public function tambahUser()
+    {
         $this->form_validation->set_rules('nama', 'Nama User', 'required');
         $this->form_validation->set_rules('no_hp', 'No Telepon', 'required');
         $this->form_validation->set_rules('alamat', 'Alamat', 'required');
@@ -26,7 +37,8 @@ class User extends CI_Controller
             );
             $this->load->view('Layouts/head');
             $this->load->view('Layouts/navbar');
-            $this->load->view('User', $data);
+            $this->load->view('Layouts/aside');
+            $this->load->view('User/TambahUser', $data);
             $this->load->view('Layouts/footer');
         } else {
             $data = array(
@@ -38,7 +50,6 @@ class User extends CI_Controller
             );
             $this->mUser->insert($data);
             $this->session->set_flashdata('success', 'Data User Berhasil Ditambahkan!');
-            redirect('user');
         }
     }
     public function delete($id)
@@ -62,7 +73,8 @@ class User extends CI_Controller
             );
             $this->load->view('Layouts/head');
             $this->load->view('Layouts/navbar');
-            $this->load->view('UpdateUser', $data);
+            $this->load->view('Layouts/aside');
+            $this->load->view('User/UpdateUser', $data);
             $this->load->view('Layouts/footer');
         } else {
             $data = array(

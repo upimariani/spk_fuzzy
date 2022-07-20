@@ -13,6 +13,17 @@ class Balita extends CI_Controller
 
     public function index()
     {
+        $data = array(
+            'balita' => $this->mBalita->select()
+        );
+        $this->load->view('Layouts/head');
+        $this->load->view('Layouts/navbar');
+        $this->load->view('Layouts/aside');
+        $this->load->view('Balita/Balita', $data);
+        $this->load->view('Layouts/footer');
+    }
+    public function tambahBalita()
+    {
         $this->form_validation->set_rules('nama', 'Nama Balita', 'required');
         $this->form_validation->set_rules('jk', 'Jenis Kelamin Balita', 'required');
         $this->form_validation->set_rules('alamat', 'Alamat Balita', 'required');
@@ -27,7 +38,8 @@ class Balita extends CI_Controller
             );
             $this->load->view('Layouts/head');
             $this->load->view('Layouts/navbar');
-            $this->load->view('Balita', $data);
+            $this->load->view('Layouts/aside');
+            $this->load->view('Balita/TambahBalita', $data);
             $this->load->view('Layouts/footer');
         } else {
             $data = array(
@@ -65,7 +77,8 @@ class Balita extends CI_Controller
             );
             $this->load->view('Layouts/head');
             $this->load->view('Layouts/navbar');
-            $this->load->view('UpdateBalita', $data);
+            $this->load->view('Layouts/aside');
+            $this->load->view('Balita/UpdateBalita', $data);
             $this->load->view('Layouts/footer');
         } else {
             $data = array(

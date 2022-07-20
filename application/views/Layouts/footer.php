@@ -1,74 +1,97 @@
-<footer class="main-footer d-flex p-2 px-3 bg-white border-top">
-    <ul class="nav">
-        <li class="nav-item">
-            <a class="nav-link" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Services</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Products</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Blog</a>
-        </li>
-    </ul>
-    <span class="copyright ml-auto my-auto mr-2">Copyright © 2018
-        <a href="https://designrevision.com" rel="nofollow">DesignRevision</a>
-    </span>
+<!-- Main Footer -->
+<footer class="main-footer">
+  <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
+  All rights reserved.
+  <div class="float-right d-none d-sm-inline-block">
+    <b>Version</b> 3.0.5
+  </div>
 </footer>
-</main>
 </div>
-</div>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
-<script src="https://unpkg.com/shards-ui@latest/dist/js/shards.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Sharrre/2.0.1/jquery.sharrre.min.js"></script>
-<script src="<?= base_url('asset/shards/') ?>scripts/extras.1.1.0.min.js"></script>
-<script src="<?= base_url('asset/shards/') ?>scripts/shards-dashboards.1.1.0.min.js"></script>
-<script src="<?= base_url('asset/shards/') ?>scripts/app/app-blog-overview.1.1.0.js"></script>
+<!-- ./wrapper -->
+
+<!-- REQUIRED SCRIPTS -->
+
+<!-- jQuery -->
+<script src="<?= base_url('asset/AdminLTE/') ?>plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="<?= base_url('asset/AdminLTE/') ?>plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Select2 -->
+<script src="<?= base_url('asset/AdminLTE/') ?>plugins/select2/js/select2.full.min.js"></script>
+<!-- Bootstrap4 Duallistbox -->
+<script src="<?= base_url('asset/AdminLTE/') ?>plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+<!-- InputMask -->
+<script src="<?= base_url('asset/AdminLTE/') ?>plugins/moment/moment.min.js"></script>
+<script src="<?= base_url('asset/AdminLTE/') ?>plugins/inputmask/min/jquery.inputmask.bundle.min.js"></script>
+<!-- date-range-picker -->
+<script src="<?= base_url('asset/AdminLTE/') ?>plugins/daterangepicker/daterangepicker.js"></script>
+<!-- bootstrap color picker -->
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="<?= base_url('asset/AdminLTE/') ?>plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- Bootstrap Switch -->
+<script src="<?= base_url('asset/AdminLTE/') ?>plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+<!-- AdminLTE App -->
+<script src="<?= base_url('asset/AdminLTE/') ?>dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="<?= base_url('asset/AdminLTE/') ?>dist/js/demo.js"></script>
+<!-- jquery-validation -->
+<script src="<?= base_url('asset/AdminLTE/') ?>plugins/jquery-validation/jquery.validate.min.js"></script>
+<script src="<?= base_url('asset/AdminLTE/') ?>plugins/jquery-validation/additional-methods.min.js"></script>
+<!-- DataTables -->
+<script src="<?= base_url('asset/AdminLTE/') ?>plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="<?= base_url('asset/AdminLTE/') ?>plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="<?= base_url('asset/AdminLTE/') ?>plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="<?= base_url('asset/AdminLTE/') ?>plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 <script>
-    console.log = function() {}
-    $("#balita").on('change', function() {
+  $(function() {
+    //Initialize Select2 Elements
+    $('.select2').select2()
 
-        $(".nama").html($(this).find(':selected').attr('data-nama'));
-        $(".nama").val($(this).find(':selected').attr('data-nama'));
-
-        $(".alamat").html($(this).find(':selected').attr('data-alamat'));
-        $(".alamat").val($(this).find(':selected').attr('data-alamat'));
-
-        $(".ayah").html($(this).find(':selected').attr('data-ayah'));
-        $(".ayah").val($(this).find(':selected').attr('data-ayah'));
-
-        $(".ibu").html($(this).find(':selected').attr('data-ibu'));
-        $(".ibu").val($(this).find(':selected').attr('data-ibu'));
-
-        $(".jk").html($(this).find(':selected').attr('data-jk'));
-        $(".jk").val($(this).find(':selected').attr('data-jk'));
-
-        $(".tgl").html($(this).find(':selected').attr('data-tgl'));
-        $(".tgl").val($(this).find(':selected').attr('data-tgl'));
+    //Date range picker
+    $('#reservationdate').datetimepicker({
+      format: 'YYYY-MM-DD'
     });
+  })
 </script>
 <script>
-    window.setTimeout(function() {
-        $(".alert").fadeTo(500, 0).slideUp(500, function() {
-            $(this).remove();
-        });
-    }, 3000)
+  $(function() {
+    $("#example1").DataTable({
+      "responsive": true,
+      "autoWidth": false,
+    });
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
 </script>
 <script>
-    $("#hide").click(function() {
-        $(".create-balita").slideUp('slow');
-    });
-    $('#create').on('click', function() {
-        $('.create-balita').slideDown('slow');
-    });
+  console.log = function() {}
+  $("#balita").on('change', function() {
+
+    $(".nama").html($(this).find(':selected').attr('data-nama'));
+    $(".nama").val($(this).find(':selected').attr('data-nama'));
+
+    $(".alamat").html($(this).find(':selected').attr('data-alamat'));
+    $(".alamat").val($(this).find(':selected').attr('data-alamat'));
+
+    $(".ayah").html($(this).find(':selected').attr('data-ayah'));
+    $(".ayah").val($(this).find(':selected').attr('data-ayah'));
+
+    $(".ibu").html($(this).find(':selected').attr('data-ibu'));
+    $(".ibu").val($(this).find(':selected').attr('data-ibu'));
+
+    $(".jk").html($(this).find(':selected').attr('data-jk'));
+    $(".jk").val($(this).find(':selected').attr('data-jk'));
+
+    $(".tgl").html($(this).find(':selected').attr('data-tgl'));
+    $(".tgl").val($(this).find(':selected').attr('data-tgl'));
+
+  });
 </script>
 </body>
 
