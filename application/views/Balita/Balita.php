@@ -46,6 +46,7 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
+                                        <th>NIK</th>
                                         <th>Nama Balita</th>
                                         <th>Jenis Kelamin</th>
                                         <th>Tanggal Lahir</th>
@@ -62,13 +63,14 @@
                                     ?>
                                         <tr>
                                             <td><?= $no++ ?></td>
-                                            <td><?= $value->nama_balita ?></td>
+                                            <td><?= $value->nik ?></td>
+                                            <td><strong><a href="<?= base_url('Balita/detail_pemeriksaan/' . $value->id_balita) ?>"><?= $value->nama_balita ?></a></strong></td>
                                             <td><?= $value->jenis_kelamin ?></td>
                                             <td><?= $value->tgl_lahir ?></td>
                                             <td><?= $value->alamat_balita ?></td>
                                             <td><?= $value->nama_ayah ?></td>
                                             <td><?= $value->nama_ibu ?></td>
-                                            <td> <a href="<?= base_url('balita/delete/' . $value->id_balita) ?>" type="button" class="mb-2 btn btn-sm btn-danger mr-1"><i class="fas fa-eraser"></i></a>
+                                            <td class="text-center"> <a href="<?= base_url('balita/delete/' . $value->id_balita) ?>" type="button" class="mb-2 btn btn-sm btn-danger mr-1"><i class="fas fa-eraser"></i></a>
                                                 <a href="<?= base_url('balita/update/' . $value->id_balita) ?>" type="button" class="mb-2 btn btn-sm btn-info mr-1"><i class="fas fa-edit"></i></a>
                                             </td>
 
@@ -80,6 +82,7 @@
                                 <tfoot>
                                     <tr>
                                         <th>#</th>
+                                        <th>NIK</th>
                                         <th>Nama Balita</th>
                                         <th>Jenis Kelamin</th>
                                         <th>Tanggal Lahir</th>

@@ -65,6 +65,19 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="form-group">
+                                        <label>Level User</label>
+                                        <select class="form-control" name="level">
+                                            <option value="">--Pilih Level User--</option>
+                                            <option value="1" <?php if ($user->level_user == '1') {
+                                                                    echo 'selected';
+                                                                } ?>>Admin Puskesmas</option>
+                                            <option value="2" <?php if ($user->level_user == '2') {
+                                                                    echo 'selected';
+                                                                } ?>>Ketua Puskesmas</option>
+                                        </select>
+                                        <?= form_error('level', '<small class="text-danger pl-3">', '</small>'); ?>
+                                    </div>
                                     <button type="submit" class="btn btn-primary mb-3">Save</button>
                                     <a class="btn btn-danger mb-3" href="<?= base_url('user') ?>">Kembali</a>
                                 </form>

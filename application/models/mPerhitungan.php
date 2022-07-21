@@ -9,6 +9,20 @@ class mPerhitungan extends CI_Model
         $this->db->from('balita');
         return $this->db->get()->result();
     }
+    public function insert_perhitungan($data)
+    {
+        $this->db->insert('lap_status_gizi', $data);
+    }
+
+    //laporan status gizi
+    public function select_status_gizi($id)
+    {
+        $this->db->select('*');
+        $this->db->from('lap_status_gizi');
+        $this->db->join('balita', 'balita.id_balita = lap_status_gizi.id_balita', 'left');
+        $this->db->where('lap_status_gizi.id_balita', $id);
+        return $this->db->get()->result();
+    }
 }
 
 /* End of file mPerhitungan.php */

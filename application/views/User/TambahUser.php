@@ -60,6 +60,19 @@
                                         <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <label>Level User</label>
+                                    <select class="form-control" name="level">
+                                        <option value="">--Pilih Level User--</option>
+                                        <option value="1" <?php if (set_value('level') == '1') {
+                                                                echo 'selected';
+                                                            } ?>>Admin Puskesmas</option>
+                                        <option value="2" <?php if (set_value('level') == '2') {
+                                                                echo 'selected';
+                                                            } ?>>Ketua Puskesmas</option>
+                                    </select>
+                                    <?= form_error('level', '<small class="text-danger pl-3">', '</small>'); ?>
+                                </div>
                             </div>
                             <!-- /.card-body -->
 

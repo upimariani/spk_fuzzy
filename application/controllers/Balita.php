@@ -9,6 +9,7 @@ class Balita extends CI_Controller
     {
         parent::__construct();
         $this->load->model('mBalita');
+        $this->load->model('mPerhitungan');
     }
 
     public function index()
@@ -30,6 +31,7 @@ class Balita extends CI_Controller
         $this->form_validation->set_rules('ayah', 'Nama Ayah Balita', 'required');
         $this->form_validation->set_rules('ibu', 'Nama Ibu Balita', 'required');
         $this->form_validation->set_rules('tgl', 'Tanggal Lahir Balita', 'required');
+        $this->form_validation->set_rules('nik', 'NIK Balita', 'required');
 
 
         if ($this->form_validation->run() == FALSE) {
@@ -48,18 +50,19 @@ class Balita extends CI_Controller
                 'nama_ayah' => $this->input->post('ayah'),
                 'nama_ibu' => $this->input->post('ibu'),
                 'jenis_kelamin' => $this->input->post('jk'),
-                'tgl_lahir' => $this->input->post('tgl')
+                'tgl_lahir' => $this->input->post('tgl'),
+                'nik' => $this->input->post('nik')
             );
             $this->mBalita->insert($data);
             $this->session->set_flashdata('success', 'Data Balita Berhasil Ditambahkan!');
-            redirect('balita');
+            redirect('Balita');
         }
     }
     public function delete($id)
     {
         $this->mBalita->delete($id);
         $this->session->set_flashdata('success', 'Data Balita Berhasil Dihapus!');
-        redirect('balita');
+        redirect('Balita');
     }
     public function update($id)
     {
@@ -69,6 +72,7 @@ class Balita extends CI_Controller
         $this->form_validation->set_rules('ayah', 'Nama Ayah Balita', 'required');
         $this->form_validation->set_rules('ibu', 'Nama Ibu Balita', 'required');
         $this->form_validation->set_rules('tgl', 'Tanggal Lahir Balita', 'required');
+        $this->form_validation->set_rules('nik', 'NIK Balita', 'required');
 
 
         if ($this->form_validation->run() == FALSE) {
@@ -87,12 +91,25 @@ class Balita extends CI_Controller
                 'nama_ayah' => $this->input->post('ayah'),
                 'nama_ibu' => $this->input->post('ibu'),
                 'jenis_kelamin' => $this->input->post('jk'),
-                'tgl_lahir' => $this->input->post('tgl')
+                'tgl_lahir' => $this->input->post('tgl'),
+                'nik' => $this->input->post('nik')
             );
             $this->mBalita->update($id, $data);
             $this->session->set_flashdata('success', 'Data Balita Berhasil Diperbaharui!');
-            redirect('balita');
+            redirect('Balita');
         }
+    }
+
+    public function detail_pemeriksaan($id)
+    {
+        $data = array(
+            'lap_status_gizi' => $this->mPerhitungan->select_status_gizi($id)
+        );
+        $this->load->view('Layouts/head');
+        $this->load->view('Layouts/navbar');
+        $this->load->view('Layouts/aside');
+        $this->load->view('Balita/DetailPemeriksaan', $data);
+        $this->load->view('Layouts/footer');
     }
 }
 

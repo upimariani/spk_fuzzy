@@ -29,39 +29,6 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="<?= base_url('User') ?>" class="nav-link <?php if ($this->uri->segment(1) == 'User') {
-                                                              echo 'active';
-                                                            }  ?>">
-            <i class="nav-icon fas fa-user"></i>
-            <p>
-              Admin
-            </p>
-          </a>
-        </li>
-        <li class="nav-item has-treeview <?php if ($this->uri->segment(1) == 'Balita') {
-                                            echo 'menu-open';
-                                          }  ?>">
-          <a href="#" class="nav-link  <?php if ($this->uri->segment(1) == 'Balita') {
-                                          echo 'active';
-                                        }  ?>">
-            <i class="nav-icon fas fa-database"></i>
-            <p>
-              Kelola Data Balita
-              <i class="right fas fa-angle-left"></i>
-            </p>
-          </a>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a href="<?= base_url('Balita') ?>" class="nav-link  <?php if ($this->uri->segment(1) == 'cKelolaDataMaster' && $this->uri->segment(2) == 'admin') {
-                                                                      echo 'active';
-                                                                    }  ?>">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Data Balita</p>
-              </a>
-            </li>
-          </ul>
-        </li>
-        <li class="nav-item">
           <a href="<?= base_url('cPengembalian') ?>" class="nav-link <?php if ($this->uri->segment(1) == 'cPengembalian') {
                                                                         echo 'active';
                                                                       }  ?>">

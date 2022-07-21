@@ -33,8 +33,13 @@
                         <form role="form" action="<?= base_url('Balita/tambahBalita') ?>" method="POST">
                             <div class="card-body">
                                 <div class="form-group">
+                                    <label for="exampleInputEmail1">NIK</label>
+                                    <input type="number" value="<?= set_value('nik') ?>" name="nik" class="form-control" id="exampleInputEmail1" placeholder="Masukkan NIK Balita">
+                                    <?= form_error('nik', '<small class="text-danger pl-3">', '</small>'); ?>
+                                </div>
+                                <div class="form-group">
                                     <label for="exampleInputEmail1">Nama Balita</label>
-                                    <input type="text" value="<?= set_value('nama') ?>" name="nama" class="form-control" id="exampleInputEmail1" placeholder="Masukkan Nama User">
+                                    <input type="text" value="<?= set_value('nama') ?>" name="nama" class="form-control" id="exampleInputEmail1" placeholder="Masukkan Nama Balita">
                                     <?= form_error('nama', '<small class="text-danger pl-3">', '</small>'); ?>
                                 </div>
                                 <div class="form-group">
@@ -52,21 +57,21 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Alamat Balita</label>
-                                    <input type="text" name="alamat" value="<?= set_value('alamat') ?>" class="form-control" id="inputPassword4" placeholder="Masukkan Alamat">
+                                    <input type="text" name="alamat" value="<?= set_value('alamat') ?>" class="form-control" id="inputPassword4" placeholder="Masukkan Alamat Balita">
                                     <?= form_error('alamat', '<small class="text-danger pl-3">', '</small>'); ?>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Nama Ayah</label>
-                                            <input type="text" name="ayah" value="<?= set_value('ayah') ?>" class="form-control" id="inputPassword4" placeholder="Masukkan Username">
+                                            <input type="text" name="ayah" value="<?= set_value('ayah') ?>" class="form-control" id="inputPassword4" placeholder="Masukkan Nama Ayah">
                                             <?= form_error('ayah', '<small class="text-danger pl-3">', '</small>'); ?>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Nama Ibu</label>
-                                            <input type="text" name="ibu" value="<?= set_value('ibu') ?>" class="form-control" id="inputPassword4" placeholder="Masukkan Password">
+                                            <input type="text" name="ibu" value="<?= set_value('ibu') ?>" class="form-control" id="inputPassword4" placeholder="Masukkan Nama Ibu">
                                             <?= form_error('ibu', '<small class="text-danger pl-3">', '</small>'); ?>
                                         </div>
                                     </div>

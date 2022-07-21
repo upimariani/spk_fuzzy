@@ -16,11 +16,9 @@
             <?php
             if ($this->session->userdata('success')) {
             ?>
-                <div class="alert alert-accent alert-dismissible fade show mb-0" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                    <i class="fa fa-info mx-2"></i>
+                <div class="alert alert-success alert-dismissible mt-3">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <h5><i class="icon fas fa-check"></i> Alert!</h5>
                     <?=
                     $this->session->userdata('success')
                     ?>
@@ -53,6 +51,7 @@
                                         <th>Admin</th>
                                         <th>Alamat</th>
                                         <th>Akun</th>
+                                        <th>Level User</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -66,6 +65,11 @@
                                             <td><?= $value->nama_user ?><br><?= $value->no_hp ?></td>
                                             <td><?= $value->alamat ?></td>
                                             <td><span class="badge badge-success"><?= $value->username ?></span><span class="badge badge-warning"> <?= $value->password ?></span></td>
+                                            <td><?php if ($value->level_user == '1') {
+                                                    echo 'Admin Puskesmas';
+                                                } else {
+                                                    echo 'Ketua Puskesmas';
+                                                } ?></td>
                                             <td> <a href="<?= base_url('user/delete/' . $value->id_user) ?>" type="button" class="mb-2 btn btn-sm btn-danger mr-1"><i class="fas fa-eraser"></i></a><a href="<?= base_url('user/update_user/' . $value->id_user) ?>" type="button" class="mb-2 btn btn-sm btn-info mr-1"><i class="fas fa-edit"></i></a></td>
                                         </tr>
                                     <?php

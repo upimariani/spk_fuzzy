@@ -29,6 +29,7 @@ class User extends CI_Controller
         $this->form_validation->set_rules('alamat', 'Alamat', 'required');
         $this->form_validation->set_rules('username', 'Username', 'required');
         $this->form_validation->set_rules('password', 'Password', 'required');
+        $this->form_validation->set_rules('level', 'Level', 'required');
 
 
         if ($this->form_validation->run() == FALSE) {
@@ -47,16 +48,18 @@ class User extends CI_Controller
                 'no_hp' => $this->input->post('no_hp'),
                 'username' => $this->input->post('username'),
                 'password' => $this->input->post('password'),
+                'level_user' => $this->input->post('level')
             );
             $this->mUser->insert($data);
             $this->session->set_flashdata('success', 'Data User Berhasil Ditambahkan!');
+            redirect('User');
         }
     }
     public function delete($id)
     {
         $this->mUser->delete($id);
         $this->session->set_flashdata('success', 'Data User Berhasil Dihapus!');
-        redirect('user');
+        redirect('User');
     }
     public function update_user($id)
     {
@@ -65,6 +68,7 @@ class User extends CI_Controller
         $this->form_validation->set_rules('alamat', 'Alamat', 'required');
         $this->form_validation->set_rules('username', 'Username', 'required');
         $this->form_validation->set_rules('password', 'Password', 'required');
+        $this->form_validation->set_rules('level', 'Level', 'required');
 
 
         if ($this->form_validation->run() == FALSE) {
@@ -83,10 +87,11 @@ class User extends CI_Controller
                 'no_hp' => $this->input->post('no_hp'),
                 'username' => $this->input->post('username'),
                 'password' => $this->input->post('password'),
+                'level_user' => $this->input->post('level')
             );
             $this->mUser->update($id, $data);
             $this->session->set_flashdata('success', 'Data User Berhasil Diperbaharui!');
-            redirect('user');
+            redirect('User');
         }
     }
 }

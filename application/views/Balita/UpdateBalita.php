@@ -27,7 +27,13 @@
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item p-0 px-3 pt-3">
                                 <form action="<?= base_url('Balita/Update/' . $balita->id_balita) ?>" method="POST">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">NIK</label>
+                                        <input type="number" value="<?= $balita->nik ?>" name="nik" class="form-control" id="exampleInputEmail1" placeholder="Masukkan NIK Balita">
+                                        <?= form_error('nik', '<small class="text-danger pl-3">', '</small>'); ?>
+                                    </div>
                                     <div class="row">
+
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label>Nama Balita</label>
