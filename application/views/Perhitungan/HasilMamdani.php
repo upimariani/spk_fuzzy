@@ -156,6 +156,10 @@
 														<input type="hidden" name="status_gizi" value="<?= $status_gizi ?>">
 														<input type="hidden" name="tgl" value="<?= date('Y-m-d') ?>">
 														<input type="hidden" name="id_balita" value="<?= $id_balita ?>">
+														<input type="hidden" name="umur" value="<?= $umur ?>">
+														<input type="hidden" name="bb" value="<?= $berat ?>">
+														<input type="hidden" name="tb" value="<?= $tinggi ?>">
+
 														<button type="submit" class="btn btn-success float-right"><i class="far fa-credit-card"></i>
 															Simpan Data
 														</button>

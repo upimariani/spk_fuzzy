@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 04, 2022 at 06:44 AM
--- Server version: 10.4.20-MariaDB
--- PHP Version: 7.4.22
+-- Waktu pembuatan: 22 Jul 2022 pada 15.41
+-- Versi server: 10.4.20-MariaDB
+-- Versi PHP: 7.4.22
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,11 +24,12 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `balita`
+-- Struktur dari tabel `balita`
 --
 
 CREATE TABLE `balita` (
   `id_balita` int(11) NOT NULL,
+  `nik` varchar(20) NOT NULL,
   `nama_balita` varchar(50) NOT NULL,
   `alamat_balita` varchar(50) NOT NULL,
   `nama_ayah` varchar(50) NOT NULL,
@@ -37,50 +38,33 @@ CREATE TABLE `balita` (
   `tgl_lahir` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `balita`
+-- Struktur dari tabel `lap_status_gizi`
 --
 
-INSERT INTO `balita` (`id_balita`, `nama_balita`, `alamat_balita`, `nama_ayah`, `nama_ibu`, `jenis_kelamin`, `tgl_lahir`) VALUES
-(4, 'Nanda Maulida', 'Ciawigebang, Kuningan', 'Maman', 'Siti', 'P', '06/12/2019'),
-(5, 'Zaenal', 'Pamijahan', 'Fajar', 'Sarah', 'L', '2005-03-04');
+CREATE TABLE `lap_status_gizi` (
+  `id_lap` int(11) NOT NULL,
+  `id_balita` int(11) NOT NULL,
+  `tgl_periksa` varchar(15) NOT NULL,
+  `umur` int(11) NOT NULL,
+  `bb` int(11) NOT NULL,
+  `tb` int(11) NOT NULL,
+  `m1` varchar(10) NOT NULL,
+  `m2` varchar(10) NOT NULL,
+  `m3` varchar(10) NOT NULL,
+  `a1` varchar(10) NOT NULL,
+  `a2` varchar(10) NOT NULL,
+  `a3` varchar(10) NOT NULL,
+  `titik_pusat` varchar(10) NOT NULL,
+  `status_gizi` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `index`
---
-
-CREATE TABLE `index` (
-  `id_index` int(11) NOT NULL,
-  `nama_index` varchar(50) NOT NULL,
-  `range_awal` varchar(50) NOT NULL,
-  `range_tengah` varchar(50) NOT NULL,
-  `range_akhir` varchar(50) NOT NULL,
-  `keterangan` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `index`
---
-
-INSERT INTO `index` (`id_index`, `nama_index`, `range_awal`, `range_tengah`, `range_akhir`, `keterangan`) VALUES
-(1, 'Umur', '0', '6', '12', 'fase 1'),
-(2, 'Umur', '6', '12', '24', 'fase 2'),
-(3, 'Umur', '12', '24', '36', 'fase 3'),
-(4, 'Umur', '24', '36', '48', 'fase 4'),
-(5, 'Umur', '36', '48', '60', 'fase 5'),
-(6, 'Berat Badan Laki-Laki', '0', '7', '13', 'ringan'),
-(7, 'Berat Badan Laki-Laki', '7', '13', '19', 'sedang'),
-(8, 'Berat Badan Laki-Laki', '13', '19', '19', 'berat'),
-(9, 'Berat Badan Perempuan', '0', '7', '12', 'ringan'),
-(10, 'Berat Badan Perempuan', '7', '12', '18', 'sedang'),
-(11, 'Berat Badan Perempuan', '12', '18', '18', 'berat');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `user`
+-- Struktur dari tabel `user`
 --
 
 CREATE TABLE `user` (
@@ -89,60 +73,61 @@ CREATE TABLE `user` (
   `alamat` varchar(125) NOT NULL,
   `no_hp` varchar(15) NOT NULL,
   `username` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL
+  `password` varchar(50) NOT NULL,
+  `level_user` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `user`
+-- Dumping data untuk tabel `user`
 --
 
-INSERT INTO `user` (`id_user`, `nama_user`, `alamat`, `no_hp`, `username`, `password`) VALUES
-(1, 'Nita', 'Ciawigebang, Kuningan', '0875698745633', 'admin', 'admin'),
-(4, 'Upi', 'Cigugur, Kuningan', '085156727368', 'upiadmin', 'upiadmin');
+INSERT INTO `user` (`id_user`, `nama_user`, `alamat`, `no_hp`, `username`, `password`, `level_user`) VALUES
+(1, 'Nita', 'Ciawigebang, Kuningan', '0875698745633', 'admin', 'admin', 1),
+(4, 'Upi', 'Cigugur, Kuningan', '085156727368', 'upiadmin', 'upiadmin', 2);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `balita`
+-- Indeks untuk tabel `balita`
 --
 ALTER TABLE `balita`
   ADD PRIMARY KEY (`id_balita`);
 
 --
--- Indexes for table `index`
+-- Indeks untuk tabel `lap_status_gizi`
 --
-ALTER TABLE `index`
-  ADD PRIMARY KEY (`id_index`);
+ALTER TABLE `lap_status_gizi`
+  ADD PRIMARY KEY (`id_lap`);
 
 --
--- Indexes for table `user`
+-- Indeks untuk tabel `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id_user`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `balita`
+-- AUTO_INCREMENT untuk tabel `balita`
 --
 ALTER TABLE `balita`
-  MODIFY `id_balita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_balita` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `index`
+-- AUTO_INCREMENT untuk tabel `lap_status_gizi`
 --
-ALTER TABLE `index`
-  MODIFY `id_index` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+ALTER TABLE `lap_status_gizi`
+  MODIFY `id_lap` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -601,6 +601,9 @@ class Perhitungan extends CI_Controller
 		$data = array(
 			'id_balita' => $this->input->post('id_balita'),
 			'tgl_periksa' => $this->input->post('tgl'),
+			'umur' => $this->input->post('umur'),
+			'bb' => $this->input->post('bb'),
+			'tb' => $this->input->post('tb'),
 			'm1' => $this->input->post('m1'),
 			'm2' => $this->input->post('m2'),
 			'm3' => $this->input->post('m3'),
