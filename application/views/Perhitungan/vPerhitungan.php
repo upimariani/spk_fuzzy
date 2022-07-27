@@ -21,6 +21,18 @@
 	<!-- Main content -->
 	<section class="content">
 		<div class="container-fluid">
+			<?php
+			if ($this->session->userdata('error')) {
+			?>
+				<div class="callout callout-danger">
+					<h5>Error!</h5>
+
+					<p><?= $this->session->userdata('error') ?></p>
+				</div>
+			<?php
+			}
+			?>
+
 			<form action="<?= base_url('Perhitungan') ?>" method="POST">
 				<div class="row">
 					<div class="col-lg-5 mb-4">

@@ -66,9 +66,9 @@
                                             <td><?= $value->alamat ?></td>
                                             <td><span class="badge badge-success"><?= $value->username ?></span><span class="badge badge-warning"> <?= $value->password ?></span></td>
                                             <td><?php if ($value->level_user == '1') {
-                                                    echo 'Admin Puskesmas';
+                                                    echo 'Admin Posyandu';
                                                 } else {
-                                                    echo 'Ketua Puskesmas';
+                                                    echo 'Ketua Posyandu';
                                                 } ?></td>
                                             <td> <a href="<?= base_url('user/delete/' . $value->id_user) ?>" type="button" class="mb-2 btn btn-sm btn-danger mr-1"><i class="fas fa-eraser"></i></a><a href="<?= base_url('user/update_user/' . $value->id_user) ?>" type="button" class="mb-2 btn btn-sm btn-info mr-1"><i class="fas fa-edit"></i></a></td>
                                         </tr>
