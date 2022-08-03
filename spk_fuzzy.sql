@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 22 Jul 2022 pada 15.41
--- Versi server: 10.4.20-MariaDB
--- Versi PHP: 7.4.22
+-- Generation Time: Aug 03, 2022 at 06:34 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `balita`
+-- Table structure for table `balita`
 --
 
 CREATE TABLE `balita` (
@@ -38,10 +38,22 @@ CREATE TABLE `balita` (
   `tgl_lahir` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `balita`
+--
+
+INSERT INTO `balita` (`id_balita`, `nik`, `nama_balita`, `alamat_balita`, `nama_ayah`, `nama_ibu`, `jenis_kelamin`, `tgl_lahir`) VALUES
+(1, '3208106201180001  ', 'Aqila', 'Pamijahan', 'Dono', 'Wawat', 'P', '2018-01-22'),
+(2, '3208100203180002', 'Hafidz', 'Pamijahan', 'Hendi', 'Sawiti', 'L', '2018-03-02'),
+(3, '3208006308170005', 'Azka', 'Pamijahan', 'Ahdi', 'Wiwi Winarti', 'L', '2017-08-23'),
+(4, '3208106308180002', 'Tasya Dini', 'Pamijahan', 'Saeful', 'Nani', 'P', '2018-08-23'),
+(5, '3208106001211342', 'Dinda', 'Pamijahan', 'Sudirno', 'Lusi', 'P', '2021-01-20'),
+(6, '3208103107218872', 'Rifki Safwan Azzami', 'Pamijahan', 'Rosidin', 'Marni', 'L', '2021-07-31');
+
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `lap_status_gizi`
+-- Table structure for table `lap_status_gizi`
 --
 
 CREATE TABLE `lap_status_gizi` (
@@ -61,10 +73,22 @@ CREATE TABLE `lap_status_gizi` (
   `status_gizi` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `lap_status_gizi`
+--
+
+INSERT INTO `lap_status_gizi` (`id_lap`, `id_balita`, `tgl_periksa`, `umur`, `bb`, `tb`, `m1`, `m2`, `m3`, `a1`, `a2`, `a3`, `titik_pusat`, `status_gizi`) VALUES
+(1, 1, '2022-08-01', 50, 17, 70, '1193.51', '210.501', '408', '29.11', '3.96', '3.4', '50', 'Gizi Kurang'),
+(2, 2, '2022-08-03', 41, 15, 95, '1281.22', '2.47699999', '1458.6', '27.26', '0.455', '11.22', '70', 'Gizi Normal'),
+(3, 3, '2022-08-03', 47, 12, 98, '1782', '0', '689.92', '39.6', '0', '7.04', '53', 'Gizi Kurang'),
+(4, 4, '2022-08-03', 35, 10, 90, '1255.5', '34.9109999', '207.68', '27.9', '1.05', '1.76', '49', 'Gizi Kurang'),
+(5, 5, '2022-08-03', 6, 8, 65, '3249', '0', '3640', '57', '0', '26', '83', 'Gizi Lebih'),
+(6, 6, '2022-08-03', 15, 8, 72, '2790.75', '221.37', '558.75', '45.75', '3', '3.75', '68', 'Gizi Normal');
+
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -78,53 +102,53 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id_user`, `nama_user`, `alamat`, `no_hp`, `username`, `password`, `level_user`) VALUES
-(1, 'Nita', 'Ciawigebang, Kuningan', '0875698745633', 'admin', 'admin', 1),
-(4, 'Upi', 'Cigugur, Kuningan', '085156727368', 'upiadmin', 'upiadmin', 2);
+(1, 'Lina Aminati', 'Pamijahan', '0875698745633', 'ketuaposyandu', 'ketua', 2),
+(2, 'Nung Hayati', 'Pamijahan', '085156727368', 'nungadmin', 'admin', 1);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `balita`
+-- Indexes for table `balita`
 --
 ALTER TABLE `balita`
   ADD PRIMARY KEY (`id_balita`);
 
 --
--- Indeks untuk tabel `lap_status_gizi`
+-- Indexes for table `lap_status_gizi`
 --
 ALTER TABLE `lap_status_gizi`
   ADD PRIMARY KEY (`id_lap`);
 
 --
--- Indeks untuk tabel `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id_user`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `balita`
+-- AUTO_INCREMENT for table `balita`
 --
 ALTER TABLE `balita`
-  MODIFY `id_balita` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_balita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT untuk tabel `lap_status_gizi`
+-- AUTO_INCREMENT for table `lap_status_gizi`
 --
 ALTER TABLE `lap_status_gizi`
-  MODIFY `id_lap` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_lap` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT untuk tabel `user`
+-- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;

@@ -25,11 +25,15 @@ class mDashboard extends CI_Model
     //dashboard laki-laki
     public function grafik_perempuan()
     {
-        return $this->db->query("SELECT COUNT(status_gizi) as jml, status_gizi, jenis_kelamin FROM balita JOIN lap_status_gizi ON balita.id_balita=lap_status_gizi.id_balita WHERE jenis_kelamin='P' GROUP BY status_gizi")->result();
+        return $this->db->query("SELECT COUNT(status_gizi) as jml, status_gizi, jenis_kelamin FROM balita JOIN lap_status_gizi ON balita.id_balita=lap_status_gizi.id_balita WHERE jenis_kelamin='P' GROUP BY status_gizi ORDER BY jml DESC")->result();
     }
     public function grafik_laki()
     {
-        return $this->db->query("SELECT COUNT(status_gizi) as jml, status_gizi, jenis_kelamin FROM balita JOIN lap_status_gizi ON balita.id_balita=lap_status_gizi.id_balita WHERE jenis_kelamin='L' GROUP BY status_gizi")->result();
+        return $this->db->query("SELECT COUNT(status_gizi) as jml, status_gizi, jenis_kelamin FROM balita JOIN lap_status_gizi ON balita.id_balita=lap_status_gizi.id_balita WHERE jenis_kelamin='L' GROUP BY status_gizi ORDER BY jml DESC")->result();
+    }
+    public function grafik_all()
+    {
+        return $this->db->query("SELECT COUNT(status_gizi) as jml, status_gizi, jenis_kelamin FROM balita JOIN lap_status_gizi ON balita.id_balita=lap_status_gizi.id_balita GROUP BY status_gizi ORDER BY jml DESC")->result();
     }
 }
 

@@ -606,7 +606,27 @@ class Perhitungan extends CI_Controller
 		$cek = $this->mPerhitungan->cek_peritungan($id, $bln, $thn);
 		if ($cek) {
 			$this->session->set_flashdata('error', 'Perhitungan Data Balita Sudah Terlampir!');
-			redirect('Perhitungan');
+			$data = array(
+				'balita' => $this->mPerhitungan->balita(),
+				'id_balita' => $this->input->post('id_balita'),
+				'tgl_periksa' => $this->input->post('tgl'),
+				'umur' => $this->input->post('umur'),
+				'bb' => $this->input->post('bb'),
+				'tb' => $this->input->post('tb'),
+				'm1' => $this->input->post('m1'),
+				'm2' => $this->input->post('m2'),
+				'm3' => $this->input->post('m3'),
+				'a1' => $this->input->post('a1'),
+				'a2' => $this->input->post('a2'),
+				'a3' => $this->input->post('a3'),
+				'titik_pusat' => $this->input->post('titik_pusat'),
+				'status_gizi' => $this->input->post('status_gizi')
+			);
+			$this->load->view('Layouts/head');
+			$this->load->view('Layouts/navbar');
+			$this->load->view('Layouts/aside');
+			$this->load->view('Perhitungan/vPerhitungan', $data);
+			$this->load->view('Layouts/footer');
 		} else {
 			$data = array(
 				'id_balita' => $this->input->post('id_balita'),
@@ -627,6 +647,27 @@ class Perhitungan extends CI_Controller
 			$this->session->set_flashdata('success', 'Data Hasil Perhitungan Berhasil Disimpan!');
 			redirect('Balita/detail_pemeriksaan/' . $data['id_balita']);
 		}
+	}
+	public function update_hasil($id_balita)
+	{
+		$data = array(
+			'id_balita' => $this->input->post('id_balita'),
+			'tgl_periksa' => $this->input->post('tgl_periksa'),
+			'umur' => $this->input->post('umur'),
+			'bb' => $this->input->post('bb'),
+			'tb' => $this->input->post('tb'),
+			'm1' => $this->input->post('m1'),
+			'm2' => $this->input->post('m2'),
+			'm3' => $this->input->post('m3'),
+			'a1' => $this->input->post('a1'),
+			'a2' => $this->input->post('a2'),
+			'a3' => $this->input->post('a3'),
+			'titik_pusat' => $this->input->post('titik_pusat'),
+			'status_gizi' => $this->input->post('status_gizi')
+		);
+		$this->mPerhitungan->update_hasil($id_balita, $data['tgl_periksa'], $data);
+		$this->session->set_flashdata('success', 'Data Hasil Perhitungan Berhasil Diupdate!');
+		redirect('Balita/detail_pemeriksaan/' . $id_balita);
 	}
 }
 

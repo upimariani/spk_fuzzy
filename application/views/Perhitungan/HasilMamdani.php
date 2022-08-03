@@ -159,8 +159,10 @@
 														<input type="hidden" name="umur" value="<?= $umur ?>">
 														<input type="hidden" name="bb" value="<?= $berat ?>">
 														<input type="hidden" name="tb" value="<?= $tinggi ?>">
-
-														<button type="submit" class="btn btn-success float-right"><i class="far fa-credit-card"></i>
+														<a href="<?= base_url('Perhitungan') ?>" class="btn btn-danger float-right"><i class="fas fa-backspace"></i>
+															Kembali
+														</a>
+														<button type="submit" class="btn btn-success float-right"><i class="far fa-save"></i>
 															Simpan Data
 														</button>
 													</form>

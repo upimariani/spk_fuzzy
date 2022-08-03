@@ -28,6 +28,21 @@
             </div>
             <!-- /.row -->
             <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">
+                                <i class="fas fa-text-width"></i><strong>
+                                    Grafik Jumlah Status Gizi PerBulan</strong>
+                            </h3>
+                        </div>
+                        <div class="col-12 table-responsive">
+                            <canvas id="grafik_all" height="100"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
                 <div class="col-lg-6">
                     <div class="card">
                         <div class="card-header">

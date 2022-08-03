@@ -24,11 +24,29 @@
 			<?php
 			if ($this->session->userdata('error')) {
 			?>
-				<div class="callout callout-danger">
-					<h5>Error!</h5>
-
-					<p><?= $this->session->userdata('error') ?></p>
+				<div class="alert alert-danger alert-dismissible">
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+					<h5><i class="icon fas fa-ban"></i> Alert!</h5>
+					<form action="<?= base_url('Perhitungan/update_hasil/' . $id_balita) ?>" method="POST">
+						<input type="hidden" name="id_balita" value="<?= $id_balita ?>">
+						<input type="hidden" name="tgl_periksa" value="<?= $tgl_periksa ?>">
+						<input type="hidden" name="umur" value="<?= $umur ?>">
+						<input type="hidden" name="bb" value="<?= $bb ?>">
+						<input type="hidden" name="tb" value="<?= $tb ?>">
+						<input type="hidden" name="m1" value="<?= $m1 ?>">
+						<input type="hidden" name="m2" value="<?= $m2 ?>">
+						<input type="hidden" name="m3" value="<?= $m3 ?>">
+						<input type="hidden" name="a1" value="<?= $a1 ?>">
+						<input type="hidden" name="a2" value="<?= $a2 ?>">
+						<input type="hidden" name="a3" value="<?= $a3 ?>">
+						<input type="hidden" name="titik_pusat" value="<?= $titik_pusat ?>">
+						<input type="hidden" name="status_gizi" value="<?= $status_gizi ?>">
+						<p><?= $this->session->userdata('error') ?></p>
+						<button type="submit" class="btn btn-default">Update Hasil</button>
+						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+					</form>
 				</div>
+
 			<?php
 			}
 			?>

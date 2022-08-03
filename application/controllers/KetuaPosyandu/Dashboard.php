@@ -15,6 +15,7 @@ class Dashboard extends CI_Controller
 		$data = array(
 			'grafik_perempuan' => $this->mDashboard->grafik_perempuan(),
 			'grafik_laki' => $this->mDashboard->grafik_laki(),
+			'grafik_all' => $this->mDashboard->grafik_all()
 		);
 		$this->load->view('KetuaPosyandu/Layouts/head');
 		$this->load->view('KetuaPosyandu/Layouts/navbar');

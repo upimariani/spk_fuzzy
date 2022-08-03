@@ -12,7 +12,18 @@
 						<li class="breadcrumb-item active">DataTables</li>
 					</ol>
 				</div>
+
 			</div>
+			<?php
+			if ($this->session->userdata('success')) {
+			?>
+				<div class="callout callout-success">
+					<h5>Berhasil!</h5>
+					<p><?= $this->session->userdata('success') ?></p>
+				</div>
+			<?php
+			}
+			?>
 	</section>
 
 	<!-- Main content -->
