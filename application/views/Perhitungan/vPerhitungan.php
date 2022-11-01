@@ -28,7 +28,14 @@
 					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 					<h5><i class="icon fas fa-ban"></i> Alert!</h5>
 					<form action="<?= base_url('Perhitungan/update_hasil/' . $id_balita) ?>" method="POST">
+						<?php
+						$date = $tgl_periksa;
+						$pecah_tgl = explode("-", $date);
+						$thn = $pecah_tgl[0];
+						$bln = $pecah_tgl[1];
+						?>
 						<input type="hidden" name="id_balita" value="<?= $id_balita ?>">
+						<input type="hidden" name="cek_tgl_periksa" value="<?= $bln ?>">
 						<input type="hidden" name="tgl_periksa" value="<?= $tgl_periksa ?>">
 						<input type="hidden" name="umur" value="<?= $umur ?>">
 						<input type="hidden" name="bb" value="<?= $bb ?>">
@@ -66,6 +73,9 @@
 											<div class="form-group">
 												<label>Nama Balita</label>
 												<select class="form-control" name="balita" id="balita">
+													<?php
+
+													?>
 													<option value="">--Pilih Balita---</option>
 													<?php
 													foreach ($balita as $key => $value) {

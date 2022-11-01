@@ -126,29 +126,29 @@ class Perhitungan extends CI_Controller
 		for ($i = 0; $i < sizeof($lebih_dt); $i++) {
 			$data_gizi[] = 'Lebih';
 			$data_var[] = max($lebih_dt);
-
-			// echo '<br>';
 		}
-		for ($i = 0; $i < sizeof($obesitas_dt); $i++) {
+		for ($j = 0; $j < sizeof($obesitas_dt); $j++) {
 			$data_gizi[] = 'Obesitas';
 			$data_var[] = max($obesitas_dt);
 			// echo '<br>';
 		}
-		for ($i = 0; $i < sizeof($normal_dt); $i++) {
+		for ($k = 0; $k < sizeof($normal_dt); $k++) {
 			$data_gizi[] = 'Normal';
 			$data_var[] = max($normal_dt);
 			// echo '<br>';
 		}
-		for ($i = 0; $i < sizeof($kurang_dt); $i++) {
+		for ($l = 0; $l < sizeof($kurang_dt); $l++) {
 			$data_gizi[] = 'Kurang';
 			$data_var[] = max($kurang_dt);
 			// echo '<br>';
 		}
-		for ($i = 0; $i < sizeof($buruk_dt); $i++) {
+		for ($m = 0; $m < sizeof($buruk_dt); $m++) {
 			$data_gizi[] = 'Buruk';
 			$data_var[] = max($buruk_dt);
 			// echo '<br>';
 		}
+
+
 
 
 		// echo '<br>';
@@ -161,25 +161,32 @@ class Perhitungan extends CI_Controller
 		// 	echo '<br>';
 		// 	// echo '<br>';
 		// }
+		// echo '<br>';
 		// $max = max($data_var);
+
+
 		// $min = min($data_var);
 		// echo $max;
+		// echo '<br>';
 		// echo $min;
 
 
 
 
+
 		$maksimal = PHP_INT_MIN;
-		for ($i = 0; $i < sizeof($data_var); $i++) {
-			if ($data_var[$i] > $maksimal) {
-				$maksimal = $data_var[$i];
-				$gizi_maksimal = $data_gizi[$i];
+		for ($a = 0; $a < sizeof($data_var); $a++) {
+
+			if ($data_var[$a] > $maksimal) {
+				$maksimal = $data_var[$a];
+				$gizi_maksimal = $data_gizi[$a];
 			}
 		}
 
-		// echo '<br> Data Pertama: ';
+		// echo '<br> Data Pertama Maksimal: ';
 		// echo $maksimal;
 		// echo $gizi_maksimal;
+
 
 
 		// ksort($data_var);
@@ -199,23 +206,25 @@ class Perhitungan extends CI_Controller
 		// echo $gizi_maksimal;
 
 
-		sort($data_var);
-		$bottomThree = 1;
-		for ($x = 0; $x < $bottomThree; $x++) {
-			$minimal = $data_var[$x];
-			$gizi_minimal = $data_gizi[$x];
-			// echo "<br>";
+		for ($x = 0; $x < sizeof($data_var); $x++) {
+			$minimal = min($data_var);
+			// $gizi_minimal = $data_gizi[$x];
+
+			if ($minimal == $data_var[$x]) {
+				$selected = $x;
+				// echo 'selected' . $selected;
+				$gizi_minimal = $data_gizi[$selected];
+			}
 		}
 
 
-		// echo '<br> Data Terakhir: ';
+
+
+
+
+		// echo '<br> Data Terakhir Minimal: ';
 		// echo $minimal;
 		// echo $gizi_minimal;
-
-
-
-
-
 
 
 		if ($gizi_minimal == 'Buruk') {
@@ -258,8 +267,8 @@ class Perhitungan extends CI_Controller
 		//keterangan k = minimal
 		if ($gizi_maksimal == 'Buruk') {
 			if ($jk == 'L') {
-				$z = round(53 - ($maksimal * (53 - 49)));
-				$k = round(53 - ($minimal * (53 - 49)));
+				$z = round((53 - (4 * $maksimal)), 3);
+				$k = round((53 - (4 * $minimal)), 3);
 
 				//perhitungan m1 
 				$hasil_m1 = $maksimal * ($z * $z);
@@ -268,18 +277,18 @@ class Perhitungan extends CI_Controller
 
 
 				//perhitungan m2
-				$v1 = round(6.625 * ($k * $k));
+				$v1 = round((13.25 / 2) * ($k * $k));
 				// echo '<br>';
 				// echo $v1;
-				$v2 = round(0.083 * ($k * $k * $k));
+				$v2 = round((0.25 / 3) * ($k * $k * $k));
 				// echo '<br>';
 				// echo $v2;
 				// echo '<br>';
 
-				$v3 = round(6.625 * ($z * $z));
+				$v3 = round((13.25 / 2) * ($z * $z));
 				echo '<br>';
 				// echo $v3;
-				$v4 = round(0.083 * ($z * $z * $z));
+				$v4 = round((0.25 / 3) * ($z * $z * $z));
 				// echo '<br>';
 				// echo $v4;
 				// echo '<br>';
@@ -287,13 +296,12 @@ class Perhitungan extends CI_Controller
 				$v5 = $v1 - $v2;
 				$v6 = $v3 - $v4;
 
-				$hasil_m2 = $v5 - $v6;
-
+				$hasil_m2 = round($v5 - $v6, 2);
 				//perhitungan m3
 				$hasil_m3 = ($minimal * ($max_gizi * $max_gizi)) - ($minimal * ($k * $k));
 			} else if ($jk == 'P') {
-				$z = round(53 - ($maksimal * (53 - 48)));
-				$k = round(53 - ($minimal * (53 - 48)));
+				$z = round((53 - (5 * $maksimal)), 3);
+				$k = round((53 - (5 * $minimal)), 3);
 
 				//perhitungan m1 
 				$hasil_m1 = $maksimal * ($z * $z);
@@ -302,18 +310,18 @@ class Perhitungan extends CI_Controller
 
 
 				//perhitungan m2
-				$v1 = round(6.625 * ($k * $k));
+				$v1 = round((10.6 / 2) * ($k * $k));
 				// echo '<br>';
 				// echo $v1;
-				$v2 = round(0.083 * ($k * $k * $k));
+				$v2 = round((0.2 / 3) * ($k * $k * $k));
 				// echo '<br>';
 				// echo $v2;
 				// echo '<br>';
 
-				$v3 = round(6.625 * ($z * $z));
+				$v3 = round((10.6 / 2) * ($z * $z));
 				// echo '<br>';
 				// echo $v3;
-				$v4 = round(0.083 * ($z * $z * $z));
+				$v4 = round((0.2 / 3) * ($z * $z * $z));
 				// echo '<br>';
 				// echo $v4;
 				// echo '<br>';
@@ -321,159 +329,161 @@ class Perhitungan extends CI_Controller
 				$v5 = $v1 - $v2;
 				$v6 = $v3 - $v4;
 
-				$hasil_m2 = $v5 - $v6;
+				$hasil_m2 = round($v5 - $v6, 2);
 
 				//perhitungan m3
 				$hasil_m3 = ($minimal * ($max_gizi * $max_gizi)) - ($minimal * ($k * $k));
 			}
 		} else if ($gizi_maksimal == 'Kurang') {
 			if ($jk == 'L') {
-				$z = round(49 - ($maksimal * (53 - 49)));
-				$k = round(49 - ($minimal * (53 - 49)));
+				$z = round(70 - ($maksimal * 17), 3);
+				$k = round(70 - ($minimal * 17), 3);
 
 				//perhitungan m1 
 				$hasil_m1 = $maksimal * ($z * $z);
 
 
 				//perhitungan m2
-				$v1 = (4.8 * ($k * $k));
-				$v2 = (0.067 * ($k * $k * $k));
+				$v1 = ((4.12 / 2) * ($k * $k));
+				$v2 = ((0.06 / 3) * ($k * $k * $k));
 
-				$v3 = (4.8 * ($z * $z));
-				$v4 = (0.067 * ($z * $z * $z));
+				$v3 = ((4.12 / 2) * ($z * $z));
+				$v4 = ((0.06 / 3) * ($z * $z * $z));
 
 				$v5 = $v1 - $v2;
 				$v6 = $v3 - $v4;
 
-				$hasil_m2 = $v5 - $v6;
+				$hasil_m2 = round($v5 - $v6, 2);
 
 				//perhitungan m3
 				$hasil_m3 = ($minimal * ($max_gizi * $max_gizi)) - ($minimal * ($k * $k));
 			} else if ($jk == 'P') {
-				$z = round(48 - ($maksimal * (53 - 48)));
-				$k = round(48 - ($minimal * (53 - 48)));
+				$z = round(70 - ($maksimal * 17), 3);
+				$k = round(70 - ($minimal * 17), 3);
 
 				//perhitungan m1 
 				$hasil_m1 = $maksimal * ($z * $z);
 
 
 				//perhitungan m2
-				$v1 = (4.8 * ($k * $k));
-				$v2 = (0.067 * ($k * $k * $k));
+				$v1 = ((4.12 / 2) * ($k * $k));
+				$v2 = ((0.06 / 3) * ($k * $k * $k));
 
-				$v3 = (4.8 * ($z * $z));
-				$v4 = (0.067 * ($z * $z * $z));
+				$v3 = ((4.12 / 2) * ($z * $z));
+				$v4 = ((0.06 / 3) * ($z * $z * $z));
 
 				$v5 = $v1 - $v2;
 				$v6 = $v3 - $v4;
 
-				$hasil_m2 = $v5 - $v6;
+				$hasil_m2 = round($v5 - $v6, 2);
 
 				//perhitungan m3
 				$hasil_m3 = ($minimal * ($max_gizi * $max_gizi)) - ($minimal * ($k * $k));
 			}
 		} else if ($gizi_maksimal == 'Normal') {
 			if ($jk == 'L') {
-				$z = round(53 - ($maksimal * (70 - 53)));
-				$k = round(53 - ($minimal * (70 - 53)));
+				$z = round(82 - (12 * $maksimal), 3);
+				$k = round(82 - (12 * $minimal), 3);
 
 				//perhitungan m1 
 				$hasil_m1 = $maksimal * ($z * $z);
 
 
 				//perhitungan m2
-				$v1 = (1.558 * ($k * $k));
-				$v2 = (0.019 * ($k * $k * $k));
+				$v1 = ((6.83 / 2) * ($k * $k));
+				$v2 = ((0.08 / 3) * ($k * $k * $k));
 
-				$v3 = (1.558 * ($z * $z));
-				$v4 = (0.019 * ($z * $z * $z));
+				$v3 = ((6.83 / 2) * ($z * $z));
+				$v4 = ((0.08 / 3) * ($z * $z * $z));
 
 				$v5 = $v1 - $v2;
 				$v6 = $v3 - $v4;
 
-				$hasil_m2 = $v5 - $v6;
+				$hasil_m2 = round($v5 - $v6, 2);
 
 				//perhitungan m3
 				$hasil_m3 = ($minimal * ($max_gizi * $max_gizi)) - ($minimal * ($k * $k));
 			} else if ($jk == 'P') {
-				$z = round(53 - ($maksimal * (70 - 53)));
-				$k = round(53 - ($minimal * (70 - 53)));
+				$z = round(83 - (13 * $maksimal), 3);
+				$k = round(83 - (13 * $minimal), 3);
 
 				//perhitungan m1 
 				$hasil_m1 = $maksimal * ($z * $z);
 
 
 				//perhitungan m2
-				$v1 = (1.558 * ($k * $k));
-				$v2 = (0.019 * ($k * $k * $k));
+				$v1 = ((6.38 / 2) * ($k * $k));
+				$v2 = ((0.08 / 3) * ($k * $k * $k));
 
-				$v3 = (1.558 * ($z * $z));
-				$v4 = (0.019 * ($z * $z * $z));
+				$v3 = ((6.38 / 2) * ($z * $z));
+				$v4 = ((0.08 / 3) * ($z * $z * $z));
 
 				$v5 = $v1 - $v2;
 				$v6 = $v3 - $v4;
 
-				$hasil_m2 = $v5 - $v6;
+				$hasil_m2 = round($v5 - $v6, 2);
 
 				//perhitungan m3
 				$hasil_m3 = ($minimal * ($max_gizi * $max_gizi)) - ($minimal * ($k * $k));
 			}
 		} else if ($gizi_maksimal == 'Lebih') {
 			if ($jk == 'L') {
-				$z = round(70 - ($maksimal * (82 - 70)));
-				$k = round(70 - ($minimal * (82 - 70)));
+				$z = round(124 - ($maksimal * 42));
+				$k = round(124 - ($minimal * 42));
 				//perhitungan m1 
 				$hasil_m1 = $maksimal * ($z * $z);
 
 				//perhitungan m2
-				$v1 = (2.69 * ($k * $k));
-				$v2 = (0.025 * ($k * $k * $k));
+				$v1 = round((2.95 / 2) * ($k * $k), 3);
+				$v2 = round((0.02 / 3), 3) * ($k * $k * $k);
+				// $v2 = round(0.02 / 3, 3);
 
-				$v3 = (2.69 * ($z * $z));
-				$v4 = (0.025 * ($z * $z * $z));
+				$v3 = round((2.95 / 2) * ($z * $z), 3);
+				$v4 = round((0.02 / 3), 3) * ($z * $z * $z);
 
 				$v5 = $v1 - $v2;
 				$v6 = $v3 - $v4;
 
-				$hasil_m2 = $v5 - $v6;
+				$hasil_m2 = round($v5 - $v6, 3);
 
 				//perhitungan m3
 				$hasil_m3 = ($minimal * ($max_gizi * $max_gizi)) - ($minimal * ($k * $k));
+				// $hasil_m3 = $max_gizi;
 			} else if ($jk == 'P') {
-				$z = round(70 - ($maksimal * (83 - 70)));
-				$k = round(70 - ($minimal * (83 - 70)));
+				$z = round(123 - ($maksimal * 40));
+				$k = round(123 - ($minimal * 40));
 				//perhitungan m1 
 				$hasil_m1 = $maksimal * ($z * $z);
 
 				//perhitungan m2
-				$v1 = (2.69 * ($k * $k));
-				$v2 = (0.025 * ($k * $k * $k));
+				$v1 = ((3.07 / 2) * ($k * $k));
+				$v2 = ((0.03 / 3) * ($k * $k * $k));
 
-				$v3 = (2.69 * ($z * $z));
-				$v4 = (0.025 * ($z * $z * $z));
+				$v3 = ((3.07 / 2) * ($z * $z));
+				$v4 = ((0.03 / 3) * ($z * $z * $z));
 
 				$v5 = $v1 - $v2;
 				$v6 = $v3 - $v4;
 
-				$hasil_m2 = $v5 - $v6;
+				$hasil_m2 = round($v5 - $v6, 2);
 
 				//perhitungan m3
 				$hasil_m3 = ($minimal * ($max_gizi * $max_gizi)) - ($minimal * ($k * $k));
 			}
 		} else if ($gizi_maksimal == 'Obesitas') {
 			if ($jk == 'L') {
-				$z = round(82 - ($maksimal * (123 - 82)));
-				$k = round(82 - ($minimal * (123 - 82)));
+				$z = round(82 + ($maksimal * 42), 3);
+				$k = round(82 + ($minimal * 42), 3);
 
 				//perhitungan m1 
 				$hasil_m1 = $maksimal * ($z * $z);
 
 				//perhitungan m2
-				$v1 = (1.0375 * ($k * $k));
-				$v2 = (0.008 * ($k * $k * $k));
+				$v1 = ((0.02 / 2) * ($k * $k));
+				$v2 = ((1.95 / 3) * ($k * $k * $k));
 
-				$v3 = (1.0375 * ($z * $z));
-				$v4 = (0.008 * ($z * $z * $z));
+				$v3 = ((0.02 / 2) * ($z * $z));
+				$v4 = ((1.95 / 3) * ($z * $z * $z));
 
 				$v5 = $v1 - $v2;
 				$v6 = $v3 - $v4;
@@ -483,23 +493,23 @@ class Perhitungan extends CI_Controller
 				//perhitungan m3
 				$hasil_m3 = ($minimal * ($max_gizi * $max_gizi)) - ($minimal * ($k * $k));
 			} else if ($jk == 'P') {
-				$z = round(83 - ($maksimal * (123 - 83)));
-				$k = round(83 - ($minimal * (123 - 83)));
+				$z = round(83 + ($maksimal * 40), 3);
+				$k = round(83 + ($minimal * 40), 3);
 
 				//perhitungan m1 
 				$hasil_m1 = $maksimal * ($z * $z);
 
 				//perhitungan m2
-				$v1 = (1.0375 * ($k * $k));
-				$v2 = (0.008 * ($k * $k * $k));
+				$v1 = ((0.03 / 2) * ($k * $k));
+				$v2 = ((2.08 / 3) * ($k * $k * $k));
 
-				$v3 = (1.0375 * ($z * $z));
-				$v4 = (0.008 * ($z * $z * $z));
+				$v3 = ((0.03 / 2) * ($z * $z));
+				$v4 = ((2.08 / 3) * ($z * $z * $z));
 
 				$v5 = $v1 - $v2;
 				$v6 = $v3 - $v4;
 
-				$hasil_m2 = $v5 - $v6;
+				$hasil_m2 = round($v5 - $v6, 2);
 
 				//perhitungan m3
 				$hasil_m3 = ($minimal * ($max_gizi * $max_gizi)) - ($minimal * ($k * $k));
@@ -569,6 +579,12 @@ class Perhitungan extends CI_Controller
 		// echo '<h1>Hasil Status Gizi: ' . $status_gizi . '</h1>';
 
 		$data = array(
+			'z' => $z,
+			'k' => $k,
+			'v1' => $v5,
+			'v2' => $v6,
+			// 'v3' => $v3,
+			// 'v4' => $v4,
 			'nilai_maks' => $maksimal,
 			'gizi_maks' => $gizi_maksimal,
 			'nilai_min' => $minimal,
@@ -648,8 +664,9 @@ class Perhitungan extends CI_Controller
 			redirect('Balita/detail_pemeriksaan/' . $data['id_balita']);
 		}
 	}
-	public function update_hasil($id_balita)
+	public function update_hasil()
 	{
+		$cek_tgl = $this->input->post('cek_tgl_periksa');
 		$data = array(
 			'id_balita' => $this->input->post('id_balita'),
 			'tgl_periksa' => $this->input->post('tgl_periksa'),
@@ -665,9 +682,9 @@ class Perhitungan extends CI_Controller
 			'titik_pusat' => $this->input->post('titik_pusat'),
 			'status_gizi' => $this->input->post('status_gizi')
 		);
-		$this->mPerhitungan->update_hasil($id_balita, $data['tgl_periksa'], $data);
+		$this->mPerhitungan->update_hasil($data['id_balita'], $cek_tgl, $data);
 		$this->session->set_flashdata('success', 'Data Hasil Perhitungan Berhasil Diupdate!');
-		redirect('Balita/detail_pemeriksaan/' . $id_balita);
+		redirect('Balita/detail_pemeriksaan/' . $data['id_balita']);
 	}
 }
 

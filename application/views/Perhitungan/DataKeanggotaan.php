@@ -87,7 +87,7 @@
 									}
 									if ($umur >= 36 && $umur <= 60) {
 										$var_umur[] = 'fase 4';
-										if ($umur < 36 || $umur > 60) {
+										if ($umur < 36 || $umur > 48) {
 											$angg_umur[] = 0;
 										} else if ($umur >= 36 && $umur < 48) {
 											$angg_umur[] = ($umur - 36) / (48 - 36);
@@ -116,33 +116,33 @@
 
 									if ($jk == 'P') {
 										//variabel berat badan perempuan
-										if ($berat >= 0 && $berat < 19) {
+										if ($berat >= 0 && $berat < 21) {
 											$var_berat[] = 'ringan';
-											if ($berat <= 12) {
+											if ($berat <= 10) {
 												$angg_berat[] = 1;
-											} else if (12 < $berat && $berat <= 19) {
-												$angg_berat[] = (19 - $berat) / (19 - 12);
-											} else if ($berat > 19) {
+											} else if (10 < $berat && $berat <= 21) {
+												$angg_berat[] = (21 - $berat) / (21 - 10);
+											} else if ($berat > 21) {
 												$angg_berat[] = 0;
 											}
 										}
-										if ($berat >= 12 && $berat <= 25) {
+										if ($berat >= 10 && $berat <= 31) {
 											$var_berat[] = 'sedang';
-											if ($berat < 12 || $berat > 25) {
+											if ($berat < 10 || $berat > 21) {
 												$angg_berat[] = 0;
-											} else if ($berat >= 12 && $berat <= 19) {
-												$angg_berat[] = ($berat - 12) / (19 - 12);
-											} else if (19 <= $berat && $berat <= 25) {
-												$angg_berat[] = (25 - $berat) / (25 - 19);
+											} else if ($berat >= 10 && $berat <= 21) {
+												$angg_berat[] = ($berat - 10) / (21 - 10);
+											} else if (10 <= $berat && $berat <= 21) {
+												$angg_berat[] = (31 - $berat) / (31 - 21);
 											}
 										}
-										if ($berat > 19 && $berat <= 25) {
+										if ($berat > 21 && $berat <= 31) {
 											$var_berat[] = 'berat';
-											if ($berat < 19) {
+											if ($berat < 21) {
 												$angg_berat[] = 0;
-											} else if (19 <= $berat && $berat <= 25) {
-												$angg_berat[] = ($berat - 19) / (25 - 19);
-											} else if ($berat > 25) {
+											} else if (21 <= $berat && $berat <= 31) {
+												$angg_berat[] = ($berat - 21) / (31 - 21);
+											} else if ($berat > 31) {
 												$angg_berat[] = 1;
 											}
 										}
@@ -155,33 +155,33 @@
 										// echo '<br>';
 										//tinggi badan perempuan
 
-										if ($tinggi >= 0 && $tinggi < 100) {
+										if ($tinggi >= 0 && $tinggi < 83) {
 											$var_tinggi[] = 'rendah';
-											if ($tinggi < 74) {
+											if ($tinggi < 45) {
 												$angg_tinggi[] = 1;
-											} else if (74 <= $tinggi && $tinggi <= 100) {
-												$angg_tinggi[] = (100 - $tinggi) / (100 - 74);
-											} else if ($tinggi > 100) {
+											} else if (45 <= $tinggi && $tinggi <= 83) {
+												$angg_tinggi[] = (83 - $tinggi) / (83 - 45);
+											} else if ($tinggi > 83) {
 												$angg_tinggi[] = 0;
 											}
 										}
-										if ($tinggi >= 74 && $tinggi <= 123) {
+										if ($tinggi >= 45 && $tinggi <= 120) {
 											$var_tinggi[] = 'sedang';
-											if ($tinggi < 74 || $tinggi > 123) {
+											if ($tinggi < 45 || $tinggi > 120) {
 												$angg_tinggi[] = 0;
-											} else if ($tinggi >= 74 && $tinggi <= 100) {
-												$angg_tinggi[] = ($tinggi - 74) / (100 - 74);
-											} else if (100 < $tinggi && $tinggi <= 123) {
-												$angg_tinggi[] = (123 - $tinggi) / (123 - 100);
+											} else if ($tinggi >= 45 && $tinggi <= 83) {
+												$angg_tinggi[] = ($tinggi - 45) / (83 - 45);
+											} else if (83 < $tinggi && $tinggi <= 120) {
+												$angg_tinggi[] = (120 - $tinggi) / (120 - 83);
 											}
 										}
-										if ($tinggi > 100 && $tinggi <= 123) {
+										if ($tinggi > 83 && $tinggi <= 120) {
 											$var_tinggi[] = 'tinggi';
-											if ($tinggi < 100) {
+											if ($tinggi < 83) {
 												$angg_tinggi[] = 0;
-											} else if (100 <= $tinggi && $tinggi <= 123) {
-												$angg_tinggi[] = ($tinggi - 100) / (123 - 100);
-											} else if ($tinggi > 123) {
+											} else if (83 <= $tinggi && $tinggi <= 120) {
+												$angg_tinggi[] = ($tinggi - 83) / (120 - 83);
+											} else if ($tinggi > 120) {
 												$angg_tinggi[] = 1;
 											}
 										}
@@ -194,33 +194,33 @@
 										// echo '<br>';
 									} else {
 										//variabel berat badan laki-laki
-										if ($berat >= 0 && $berat < 19) {
+										if ($berat >= 0 && $berat < 20) {
 											$var_berat[] = 'ringan';
-											if ($berat < 13) {
+											if ($berat <= 10) {
 												$angg_berat[] = 1;
-											} elseif (13 <= $berat && $berat <= 19) {
-												$angg_berat[] = (19 - $berat) / (19 - 13);
-											} elseif ($berat > 19) {
+											} elseif (10 < $berat && $berat <= 20) {
+												$angg_berat[] = (20 - $berat) / (20 - 10);
+											} elseif ($berat > 20) {
 												$angg_berat[] = 0;
 											}
 										}
-										if ($berat >= 13 && $berat <= 25) {
+										if ($berat >= 10 && $berat <= 30) {
 											$var_berat[] = 'sedang';
-											if ($berat < 13 || $berat > 25) {
+											if ($berat < 10 || $berat > 30) {
 												$angg_berat[] = 0;
-											} elseif (13 <= $berat && $berat <= 19) {
-												$angg_berat[] = ($berat - 13) / (19 - 13);
-											} elseif (19 < $berat && $berat <= 25) {
-												$angg_berat[] = (25 - $berat) / (25 - 19);
+											} elseif (10 <= $berat && $berat <= 20) {
+												$angg_berat[] = ($berat - 10) / (20 - 10);
+											} elseif (20 < $berat && $berat <= 30) {
+												$angg_berat[] = (30 - $berat) / (30 - 20);
 											}
 										}
-										if ($berat > 19 && $berat <= 25) {
+										if ($berat > 20 && $berat <= 30) {
 											$var_berat[] = 'berat';
-											if ($berat < 19) {
+											if ($berat < 20) {
 												$angg_berat[] = 0;
-											} else if (19 <= $berat && $berat <= 25) {
-												$angg_berat[] = ($berat - 19) / (25 - 19);
-											} else if ($berat > 25) {
+											} else if (20 <= $berat && $berat <= 30) {
+												$angg_berat[] = ($berat - 20) / (30 - 20);
+											} else if ($berat > 30) {
 												$angg_berat[] = 1;
 											}
 										}
@@ -233,33 +233,33 @@
 										// echo '<br>';
 
 										//tinggi badan laki laki
-										if ($tinggi >= 0 && $tinggi < 101) {
+										if ($tinggi >= 0 && $tinggi < 83) {
 											$var_tinggi[] = 'rendah';
-											if ($tinggi < 75) {
+											if ($tinggi < 45) {
 												$angg_tinggi[] = 1;
-											} else if (75 <= $tinggi && $tinggi <= 101) {
-												$angg_tinggi[] = (101 - $tinggi) / (101 - 75);
-											} else if ($tinggi > 101) {
+											} else if (45 <= $tinggi && $tinggi <= 83) {
+												$angg_tinggi[] = (83 - $tinggi) / (83 - 45);
+											} else if ($tinggi > 83) {
 												$angg_tinggi[] = 0;
 											}
 										}
-										if ($tinggi > 75 && $tinggi <= 124) {
+										if ($tinggi >= 45 && $tinggi <= 120) {
 											$var_tinggi[] = 'sedang';
-											if ($tinggi < 75 || $tinggi > 124) {
+											if ($tinggi < 45 || $tinggi > 120) {
 												$angg_tinggi[] = 0;
-											} else if (75 <= $tinggi && $tinggi <= 101) {
-												$angg_tinggi[] = ($tinggi - 75) / (101 - 75);
-											} else if (101 < $tinggi && $tinggi <= 124) {
-												$angg_tinggi[] = (124 - $tinggi) / (124 - 101);
+											} else if (45 <= $tinggi && $tinggi <= 83) {
+												$angg_tinggi[] = ($tinggi - 45) / (83 - 45);
+											} else if (83 < $tinggi && $tinggi <= 120) {
+												$angg_tinggi[] = (120 - $tinggi) / (120 - 83);
 											}
 										}
-										if ($tinggi > 101 && $tinggi <= 124) {
+										if ($tinggi > 83 && $tinggi <= 120) {
 											$var_tinggi[] = 'tinggi';
-											if ($tinggi < 101) {
+											if ($tinggi < 83) {
 												$angg_tinggi[] = 0;
-											} else if (101 <= $tinggi && $tinggi <= 124) {
-												$angg_tinggi[] = ($tinggi - 101) / (124 - 101);
-											} else if ($tinggi > 124) {
+											} else if (83 <= $tinggi && $tinggi <= 120) {
+												$angg_tinggi[] = ($tinggi - 83) / (120 - 83);
+											} else if ($tinggi > 120) {
 												$angg_tinggi[] = 1;
 											}
 										}

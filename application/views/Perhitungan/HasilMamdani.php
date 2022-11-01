@@ -22,7 +22,9 @@
 				<div class="col-lg-12">
 					<div class="card card-small mb-4">
 						<div class="card-header border-bottom">
-							<h6 class="m-0">Informasi Hasil Status Gizi Balita</h6>
+							<h6 class="m-0">Informasi Hasil Status Gizi Balita <?= $k ?> | <?= $z ?></h6>
+							<p><?= $v1 ?></p>
+							<p><?= $v2 ?></p>
 						</div>
 						<section class="content">
 							<div class="container-fluid">

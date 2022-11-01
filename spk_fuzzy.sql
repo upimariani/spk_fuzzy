@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 03, 2022 at 06:34 AM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 7.4.29
+-- Waktu pembuatan: 30 Okt 2022 pada 07.16
+-- Versi server: 10.4.24-MariaDB
+-- Versi PHP: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `balita`
+-- Struktur dari tabel `balita`
 --
 
 CREATE TABLE `balita` (
@@ -39,7 +39,7 @@ CREATE TABLE `balita` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `balita`
+-- Dumping data untuk tabel `balita`
 --
 
 INSERT INTO `balita` (`id_balita`, `nik`, `nama_balita`, `alamat_balita`, `nama_ayah`, `nama_ibu`, `jenis_kelamin`, `tgl_lahir`) VALUES
@@ -53,7 +53,7 @@ INSERT INTO `balita` (`id_balita`, `nik`, `nama_balita`, `alamat_balita`, `nama_
 -- --------------------------------------------------------
 
 --
--- Table structure for table `lap_status_gizi`
+-- Struktur dari tabel `lap_status_gizi`
 --
 
 CREATE TABLE `lap_status_gizi` (
@@ -74,21 +74,16 @@ CREATE TABLE `lap_status_gizi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `lap_status_gizi`
+-- Dumping data untuk tabel `lap_status_gizi`
 --
 
 INSERT INTO `lap_status_gizi` (`id_lap`, `id_balita`, `tgl_periksa`, `umur`, `bb`, `tb`, `m1`, `m2`, `m3`, `a1`, `a2`, `a3`, `titik_pusat`, `status_gizi`) VALUES
-(1, 1, '2022-08-01', 50, 17, 70, '1193.51', '210.501', '408', '29.11', '3.96', '3.4', '50', 'Gizi Kurang'),
-(2, 2, '2022-08-03', 41, 15, 95, '1281.22', '2.47699999', '1458.6', '27.26', '0.455', '11.22', '70', 'Gizi Normal'),
-(3, 3, '2022-08-03', 47, 12, 98, '1782', '0', '689.92', '39.6', '0', '7.04', '53', 'Gizi Kurang'),
-(4, 4, '2022-08-03', 35, 10, 90, '1255.5', '34.9109999', '207.68', '27.9', '1.05', '1.76', '49', 'Gizi Kurang'),
-(5, 5, '2022-08-03', 6, 8, 65, '3249', '0', '3640', '57', '0', '26', '83', 'Gizi Lebih'),
-(6, 6, '2022-08-03', 15, 8, 72, '2790.75', '221.37', '558.75', '45.75', '3', '3.75', '68', 'Gizi Normal');
+(1, 2, '2022-10-30', 41, 15, 95, '5304.5', '236.802', '-2661.12', '51.5', '1.38', '-15.12', '76', 'Gizi Lebih');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Struktur dari tabel `user`
 --
 
 CREATE TABLE `user` (
@@ -102,7 +97,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `user`
+-- Dumping data untuk tabel `user`
 --
 
 INSERT INTO `user` (`id_user`, `nama_user`, `alamat`, `no_hp`, `username`, `password`, `level_user`) VALUES
@@ -114,41 +109,41 @@ INSERT INTO `user` (`id_user`, `nama_user`, `alamat`, `no_hp`, `username`, `pass
 --
 
 --
--- Indexes for table `balita`
+-- Indeks untuk tabel `balita`
 --
 ALTER TABLE `balita`
   ADD PRIMARY KEY (`id_balita`);
 
 --
--- Indexes for table `lap_status_gizi`
+-- Indeks untuk tabel `lap_status_gizi`
 --
 ALTER TABLE `lap_status_gizi`
   ADD PRIMARY KEY (`id_lap`);
 
 --
--- Indexes for table `user`
+-- Indeks untuk tabel `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id_user`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `balita`
+-- AUTO_INCREMENT untuk tabel `balita`
 --
 ALTER TABLE `balita`
   MODIFY `id_balita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `lap_status_gizi`
+-- AUTO_INCREMENT untuk tabel `lap_status_gizi`
 --
 ALTER TABLE `lap_status_gizi`
-  MODIFY `id_lap` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_lap` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;

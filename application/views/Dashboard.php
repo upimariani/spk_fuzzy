@@ -58,6 +58,19 @@
 
                 <!-- /.col -->
             </div>
+            <?php
+            if ($this->session->userdata('success')) {
+            ?>
+                <div class="callout callout-success">
+                    <h5>Success!</h5>
+
+                    <p><?= $this->session->userdata('success') ?></p>
+                </div>
+            <?php
+            }
+            ?>
+
+
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-6">
@@ -70,7 +83,7 @@
                             </h3>
                         </div>
                         <div class="col-12 table-responsive">
-                            <canvas id="grafik" height="100"></canvas>
+                            <canvas id="grafik_all" height="100"></canvas>
 
 
                         </div>

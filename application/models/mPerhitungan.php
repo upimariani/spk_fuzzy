@@ -22,10 +22,10 @@ class mPerhitungan extends CI_Model
         $this->db->where('YEAR(tgl_periksa)', $tahun);
         return $this->db->get()->row();
     }
-    public function update_hasil($id, $tgl, $data)
+    public function update_hasil($id, $bln, $data)
     {
         $this->db->where('id_balita', $id);
-        $this->db->where('tgl_periksa', $tgl);
+        $this->db->where('MONTH(tgl_periksa)', $bln);
         $this->db->update('lap_status_gizi', $data);
     }
 

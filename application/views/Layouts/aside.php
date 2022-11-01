@@ -74,6 +74,16 @@
           </a>
         </li>
         <li class="nav-item">
+          <a href="<?= base_url('Hasil') ?>" class="nav-link <?php if ($this->uri->segment(1) == 'Hasil') {
+                                                                echo 'active';
+                                                              }  ?>">
+            <i class="nav-icon fas fa-book"></i>
+            <p>
+              Laporan Perhitungan
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
           <a href="<?= base_url('login/logout') ?>" class="nav-link">
             <i class="nav-icon fas fa-sign-out-alt"></i>
             <p>
